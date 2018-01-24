@@ -1,11 +1,25 @@
-.note {
-    background-color: #FFFFFF;
+#addNote {
+    position: fixed;
+    font-size: 6em;
+    bottom:0;
+    right:0;
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
+  }
+  
+.note-title {
+    margin-top: 3.5em;
+}
+
+.note-category-title {
+    margin-top: 6.5em;
+    opacity: 0.5;
+}
+
+.note-category-title:hover {
+    opacity: 0.8;
 }
 
 .read-more-less {
     color: red;
-}
-
-#note-content {
-    word-wrap: inherit;
 }
