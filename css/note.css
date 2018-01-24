@@ -1,0 +1,11 @@
+.note {
+    background-color: #FFFFFF;
+}
+
+.read-more-less {
+    color: red;
+}
+
+#note-content {
+    word-wrap: inherit;
+}
