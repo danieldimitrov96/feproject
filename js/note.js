@@ -5,37 +5,43 @@ const readMoreLess = function () {
     const text = noteContent.text();
 
     if (text.length > 1000) {
-        let readLess = $('<span class=\"read-more-less\">...Show less text</span>');
+        let readLess = $('<span/>').attr('class', 'read-more-less').html('...Show less text');
         let firstPart = $('<span id="first-part">' + text.substr(0, 1000) + '</span>');
-        let readMore = $('<span class=\'read-more-less\'>...Read more</span>');
-        let secondPart = $('<span id="second-part">' + text.substr(1000, text.length) + '</span>');
+        let readMore = $('<span/>').attr('class', 'read-more-less').html(' ...Read more');
+        let secondPart = $('<span/>').attr('id', 'second-part').html(text.substr(1000, text.length));
         secondPart.css('display', 'none');
         noteContent.html('');
-        noteContent.append(firstPart, readMore, secondPart);
-
-        readMore = noteContent.find('.read-more-less');
-
-        readMore.click(function () {
-            if (secondPart.css('display') === 'none') {
-                readMore.css('display', 'none');
-                secondPart.append(readLess);
-                secondPart.show("slow");
-            }
-        });
-
-        readLess.click(function () {
-            secondPart.hide("slow");
-            readMore.show("slow");
-        });
     }
 };
 
 const note = (function () {
     const parent = $('.grid-row');
-    const container = $('<div class=\'col-sm-4 note-container\'><div id="note" class=\'note\'></div></div>');
-    const title = $('<div class=\'row\'><div class=\'col-sm-12\'><p class=\'h4 page-header\' id="note-title"></p></div>');
-    const content = $('<div class=\'row\'><div class=\'col-sm-12\'><p id="note-content"></p></div></div>');
+    const container =
+        $('<div/>').attr({
+            'class': 'col-sm-4 note-container',
+        }).append($('<div/>').attr({
+            'id': 'note',
+            'class': 'note',
+        }));
+    const title = $('<div/>').attr({
+        'class': 'row',
+    }).append($('<div/>').attr({
+        'class': 'col-sm-12',
+    })).html($('<p/>').attr({
+        'class': 'h4 page-header note-title',
+        'id': 'note-title',
+    }));
+
+    const content = $('<div/>').attr({
+        'class': 'row',
+    }).append($('<div/>').attr({
+        'class': 'col-sm-12',
+    })).html($('<p/>').attr({
+        'id': 'note-content',
+    }));
+    
     const bottom = $('<div class=\'row\'><div class=\'col-xs-4\'><hr /><p id="note-date-and-time"><strong>10:30AM</strong><i>10.20.2099</i></p></div><div class="col-xs-8 text-right note-options"><hr /><span class="hint--bottom" aria-label="expand"><i class="material-icons hint--info">settings_ethernet</i></span><span class="hint--bottom" aria-label="edit"><i class="material-icons">mode_edit</i></span><span class="hint--bottom" aria-label="preferences"><i class="material-icons">settings</i></span></div></div></div>');
+    
     const dateTime = bottom.find('#note-date-and-time');
 
     const addTitle = function (text) {
@@ -56,10 +62,10 @@ const note = (function () {
     }
 
     return {
-        add: function add(title = null, content = null, dateTime = null) {
+        add: function add(title = null, content = null) {
             addTitle(title);
             addContent(content);
-            setDateTime(dateTime);
+            setDateTime();
             container.clone().appendTo(parent);
         }
     }
