@@ -107,25 +107,13 @@
                   <textarea name='editor1' type="text" class="form-control" placehoulder="Note Body"></textarea>;
                 </div>
                 <div class='form-group'>
-                  <div class="dropdown create">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
-                      aria-expanded="true">
-                      Add Cathegory
-                      <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                      <li>
-                        <a href="#">ADD PAGE</a>
-                      </li>
-                      <li>
-                        <a href="#">TO DO</a>
-                      </li>
-                      <li>
-                        <a href="#">WORK</a>
-                      </li>
-                    </ul>
-                    <input id="colorpicker" onchange="clickColor(0, -1, -1, 5)" value="#ff0000"  type="color">
-                  </div>
+                  <select id='category' class='btn btn-default dropdown-toggle'>
+                    <option value="NEW IDEAS">NEW IDEAS</option>
+                    <option value="TODO">TODO</option>
+                    <option value="WORK" selected>WORK</option>
+                  </select>
+                  <input class='btn btn-default dropdown-toggle' id="colorpicker" value="#ff0000" type="color">
+
 
                 </div>
 
