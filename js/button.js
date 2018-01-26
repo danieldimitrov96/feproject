@@ -6,6 +6,9 @@ submitEditButton.click( function( e ) {
 
     // prevent default
     e.preventDefault();
+
+    // togle pop-up
+    $( "#editNoteModal" ).modal( "toggle" );
 } );
 
 submitButton.click( function( e ) {

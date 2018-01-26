@@ -1,5 +1,13 @@
 /* eslint-disable */
 
+const rgb2hex =(rgb)=> {
+    rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+    function hex(x) {
+        return ("0" + parseInt(x).toString(16)).slice(-2);
+    }
+    return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+}
+
 const readMoreLess = function (currentNote) {
     const noteContent = currentNote.find('#note-content');
     const text = noteContent.text();
@@ -151,10 +159,12 @@ const note = (function () {
         const contentNow = note.find('#note-content').html();
         const categoryNow = note.find('#note-category-area').text();
         const styleNow= note.css("background-color");
-        console.log(styleNow);
-
+        $("#categoryEdit").val(categoryNow).change();
+        $("#colorpickerEdit").val(rgb2hex(styleNow));
         $('#editNoteTitle').val(titleNow);
         CKEDITOR.instances.editor2.setData(contentNow);
+       // set changed values
+       
     }
 
     return {
