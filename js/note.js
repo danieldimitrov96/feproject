@@ -117,7 +117,6 @@ const note = (function () {
 
     const addContent = function (text) {
         const noteContent = content.find('#note-content');
-        // add responsive class to images.
         noteContent.html($.parseHTML(text));
         content.appendTo(container.find('#note'));
     }
