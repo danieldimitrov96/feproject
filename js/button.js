@@ -1,6 +1,7 @@
 const submitButton = $( "#modalSubmitButton" );
-const submitEditButton = $( "#modalSubmitEditButton" );
 const pickColor = $( "#colorpicker" );
+
+const submitEditButton = $( "#modalSubmitEditButton" );
 
 submitEditButton.click( function( e ) {
 
