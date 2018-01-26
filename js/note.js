@@ -1,5 +1,13 @@
 /* eslint-disable */
 
+const rgb2hex =(rgb)=> {
+    rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+    function hex(x) {
+        return ("0" + parseInt(x).toString(16)).slice(-2);
+    }
+    return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+}
+
 const readMoreLess = function (currentNote) {
     const noteContent = currentNote.find('#note-content');
     const text = noteContent.text();
@@ -146,12 +154,35 @@ const note = (function () {
     };
 
     const addCurrentInputInEditModal = function (note) {
-        const titleNow = note.find('#note-title').text();
-        const contentNow = note.find('#note-content').html();
-        const categoryNow = note.find('#note-category-area').text();
-
+        let titleNow = note.find('#note-title').text();
+        let contentNow = note.find('#note-content').html();
+        let categoryNow = note.find('#note-category-area').text();
+        let styleNow= note.css("background-color");
+        $("#categoryEdit").val(categoryNow).change();
+        $("#colorpickerEdit").val(rgb2hex(styleNow));
         $('#editNoteTitle').val(titleNow);
         CKEDITOR.instances.editor2.setData(contentNow);
+       // set changed values
+
+       $( "#modalSubmitEditButton" ).click( function( e ) {
+           
+    
+    
+        // get values from the edit
+        titleNow = $( "#editNoteTitle" ).val();
+        contentNow = CKEDITOR.instances.editor2.getData();
+        categoryNow = $( "#categoryEdit" ).val();
+        styleNow= $( "#colorpickerEdit" ).val();
+        console.log(categoryNow);
+    
+    
+        // set changed values
+        note.find('#note-title').text(titleNow)
+        note.find('#note-content').html(contentNow);
+        note.find('#note-category-area').html(`<p class="note-category-title h6 page-header">${categoryNow}</p>`);
+        note.css( "background-color", styleNow);
+    })
+       
     }
 
     return {
