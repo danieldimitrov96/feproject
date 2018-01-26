@@ -1,5 +1,11 @@
 const submitButton = $('#modalSubmitButton');
+const submitEditButton = $('#modalSubmitEditButton');
 const pickColor = $('#colorpicker');
+
+submitEditButton.click(function(e){
+    //prevent default
+    e.preventDefault();
+});
 
 
 submitButton.click(function (e) {
@@ -15,7 +21,7 @@ submitButton.click(function (e) {
 
     //create new note
     note.add(noteTitle, noteText, noteCategory);
-
+    
     //set color of the
     var lastNote = $('.note-container').last();
     var colorHEX = pickColor.val();

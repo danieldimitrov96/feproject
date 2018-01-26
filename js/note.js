@@ -31,6 +31,11 @@ const applyButtonsEvents = function (currentNote) {
             note.wipe(currentNote)
         }, 1000);
     });
+
+    const editButton = currentNote.find('#edit_button');
+    editButton.click(function () {
+        note.addCurrentInputInEditModal(currentNote);
+    });
 }
 
 const applyHoverEffects = function (currentNote) {
@@ -87,7 +92,7 @@ const note = (function () {
 
     // HTML template for the bottom.
     // TODO: It's ugly. Rewrite it.
-    const bottom = $('<div id="bottom" class=\'note-bottom\'><div class=\'row\'><div class=\'col-xs-4\'><p class=\'note-date-and-time\' id="note-date-and-time"></p></div><div class="col-xs-8 text-right note-options"><span class="hint--bottom" aria-label="expand"><i class="material-icons hint--info">settings_ethernet</i></span><span class="hint--bottom" aria-label="edit"><i class="material-icons">mode_edit</i></span><span class="hint--bottom" aria-label="delete"><i id="wipe_button" class="material-icons">delete_forever</i></span></div></div></div>');
+    const bottom = $('<div id="bottom"\><div class=\'col-xs-4\'><p id="note-date-and-time"><strong>10:30AM</strong><i>10.20.2099</i></p></div><div class="col-xs-8 text-right note-options"><span class="hint--bottom" aria-label="expand"><i class="material-icons hint--info">settings_ethernet</i></span><span id="edit_button" class="hint--bottom" aria-label="edit" data-toggle="modal" data-target="#editNoteModal"><i class="material-icons">mode_edit</i></span><span class="hint--bottom" aria-label="delete"><i id="wipe_button" class="material-icons">delete_forever</i></span></div></div></div>');
 
     const dateTime = bottom.find('#note-date-and-time');
 
@@ -130,6 +135,18 @@ const note = (function () {
         note.remove();
     };
 
+    const addCurrentInputInEditModal = function (note) {
+        const titleNow = note.find('#note-title').text();
+        const contentNow = note.find('#note-content').html();
+        const categoryNow = note.find('#note-category-area').text();
+
+        $('#editNoteTitle').val(titleNow);
+        CKEDITOR.instances.editor2.setData(contentNow);
+    }
+
+
+
+
     return {
         'add': function add(title = null, content = null, category = null) {
             addTitle(title);
@@ -143,5 +160,6 @@ const note = (function () {
             readMoreLess(noteFinal);
         },
         'wipe': wipe,
+        'addCurrentInputInEditModal': addCurrentInputInEditModal,
     }
 })();
