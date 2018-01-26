@@ -42,13 +42,23 @@ const applyHoverEffects = function (currentNote) {
     const bottom = currentNote.find('#bottom');
     const noteOptions = bottom.find('.note-options'); // . > #
     noteOptions.css('display', 'none');
-    // TODO: Add some kind of "fade in & out" animation.
+    
     currentNote.on({
         mouseenter: function () {
             noteOptions.fadeIn(300);
         },
         mouseleave: function () {
             noteOptions.fadeOut(300);
+        }
+    });
+
+    // expand button
+    const expand = bottom.find('#expand_button');
+    expand.click(function(){
+        if (currentNote.attr('class').includes('col-sm-3')) {
+            currentNote.attr('class', 'col-sm-6');
+        } else {
+            currentNote.attr('class', 'col-sm-3');
         }
     })
 };
@@ -92,7 +102,7 @@ const note = (function () {
 
     // HTML template for the bottom.
     // TODO: It's ugly. Rewrite it.
-    const bottom = $('<div id="bottom"\><div class=\'col-xs-4\'><p id="note-date-and-time"><strong>10:30AM</strong><i>10.20.2099</i></p></div><div class="col-xs-8 text-right note-options"><span class="hint--bottom" aria-label="expand"><i class="material-icons hint--info">settings_ethernet</i></span><span id="edit_button" class="hint--bottom" aria-label="edit" data-toggle="modal" data-target="#editNoteModal"><i class="material-icons">mode_edit</i></span><span class="hint--bottom" aria-label="delete"><i id="wipe_button" class="material-icons">delete_forever</i></span></div></div></div>');
+    const bottom = $('<div class="note-bottom" id="bottom"\><div class=\'col-xs-5\'><p class=\'note-date-and-time\' id="note-date-and-time"></p></div><div class="col-xs-7 text-right note-options"><span id="expand_button" class="hint--bottom" aria-label="expand"><i class="material-icons hint--info">settings_ethernet</i></span><span id="edit_button" class="hint--bottom" aria-label="edit" data-toggle="modal" data-target="#editNoteModal"><i class="material-icons">mode_edit</i></span><span class="hint--bottom" aria-label="delete"><i id="wipe_button" class="material-icons">delete_forever</i></span></div></div>');
 
     const dateTime = bottom.find('#note-date-and-time');
 
@@ -128,7 +138,7 @@ const note = (function () {
 
         const date = new Date();
         dateTime.text(`${date.getHours()}:${date.getMinutes()} ${date.getDate()}-${months[date.getMonth()]}-${date.getFullYear()}`);
-        bottom.appendTo(container.find('#note'));
+        bottom.appendTo(container.find('.note-content'));
     };
 
     const wipe = function (note) {
@@ -143,9 +153,6 @@ const note = (function () {
         $('#editNoteTitle').val(titleNow);
         CKEDITOR.instances.editor2.setData(contentNow);
     }
-
-
-
 
     return {
         'add': function add(title = null, content = null, category = null) {
