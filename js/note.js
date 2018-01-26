@@ -58,9 +58,9 @@ const applyHoverEffects = function (currentNote) {
         if (currentNote.attr('class').includes('col-sm-3')) {
             currentNote.attr('class', 'col-sm-6');
         } else {
-            currentNote.attr('class', 'col-sm-3');
+            currentNote.attr('class', 'col-sm-3');  
         }
-    })
+    });
 };
 
 const note = (function () {
@@ -79,10 +79,10 @@ const note = (function () {
     const title = $('<div/>').attr({
         'class': 'row',
     }).append($('<div/>').attr({
-        'class': 'col-xs-10',
+        'class': 'col-xs-8',
         'id': 'note-title-area'
     })).append($('<div/>').attr({
-        'class': 'col-xs-2',
+        'class': 'col-xs-4',
         'id': 'note-category-area',
     }));
     title.find('#note-title-area').append($('<p/>').attr({
@@ -117,6 +117,7 @@ const note = (function () {
 
     const addContent = function (text) {
         const noteContent = content.find('#note-content');
+        // add responsive class to images.
         noteContent.html($.parseHTML(text));
         content.appendTo(container.find('#note'));
     }
