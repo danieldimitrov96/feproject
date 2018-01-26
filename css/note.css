@@ -6,13 +6,13 @@
     margin-right: 0.5em;
     margin-bottom: 0.5em;
   }
-  
-.note-title {
-    margin-top: 3.5em;
+
+.note-container {
+    border-radius: 3px;
 }
 
 .note-category-title {
-    margin-top: 6.5em;
+    margin-top: 4.5em;
     opacity: 0.5;
 }
 
@@ -22,4 +22,12 @@
 
 .read-more-less {
     color: red;
+}
+
+.note-date-and-time {
+    opacity: 0.5;
+}
+
+.note-date-and-time:hover {
+    opacity: 0.8;
 }
