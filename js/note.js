@@ -32,11 +32,19 @@ const readMoreLess = function (currentNote) {
 };
 
 const applyButtonsEvents = function(currentNote) {
+
     const wipeButton = currentNote.find('#wipe_button');
     wipeButton.click(function(){
         note.wipe(currentNote);
     });
+
+    const editButton = currentNote.find('#edit_button');
+    editButton.click(function() {
+        note.addCurrentInputInEditModal(currentNote);
+    });
 }
+
+
 
 const applyHoverEffects = function(currentNote) {
     const bottom = currentNote.find('#bottom');
@@ -92,7 +100,7 @@ const note = (function () {
     
     // HTML template for the bottom.
     // TODO: It's ugly. Rewrite it.
-    const bottom = $('<div class=\'row\' id="bottom"\><div class=\'col-xs-4\'><hr /><p id="note-date-and-time"><strong>10:30AM</strong><i>10.20.2099</i></p></div><div class="col-xs-8 text-right note-options"><hr /><span class="hint--bottom" aria-label="expand"><i class="material-icons hint--info">settings_ethernet</i></span><span class="hint--bottom" aria-label="edit"><i class="material-icons">mode_edit</i></span><span class="hint--bottom" aria-label="delete"><i id="wipe_button" class="material-icons">delete_forever</i></span></div></div></div>');
+    const bottom = $('<div class=\'row\' id="bottom"\><div class=\'col-xs-4\'><hr /><p id="note-date-and-time"><strong>10:30AM</strong><i>10.20.2099</i></p></div><div class="col-xs-8 text-right note-options"><hr /><span class="hint--bottom" aria-label="expand"><i class="material-icons hint--info">settings_ethernet</i></span><span id="edit_button" class="hint--bottom" aria-label="edit" data-toggle="modal" data-target="#editNoteModal"><i class="material-icons">mode_edit</i></span><span class="hint--bottom" aria-label="delete"><i id="wipe_button" class="material-icons">delete_forever</i></span></div></div></div>');
 
     const dateTime = bottom.find('#note-date-and-time');
 
@@ -121,6 +129,22 @@ const note = (function () {
         note.remove();
     };
 
+    const addCurrentInputInEditModal = function(note){
+        const contentNow = note.find('#note-content').html();
+        const titleNow = note.find('#note-title').text();
+        const categoryNow = note.find('#note-category-area').text();
+        // console.log(titleNow);
+        
+        
+         $('#editNoteTitle').val(titleNow);
+         CKEDITOR.instances.editor2.setData(contentNow);
+         // $('#editNoteTitle').val("test");
+         // TODO: implement category color and content
+    }
+
+   
+   
+
     return {
         'add': function add(title = null, content = null, category = null) {
             addTitle(title);
@@ -134,5 +158,6 @@ const note = (function () {
             readMoreLess(noteFinal);
         },
         'wipe': wipe,
+        'addCurrentInputInEditModal': addCurrentInputInEditModal,
     }
 })();

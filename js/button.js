@@ -1,7 +1,13 @@
 
 
 const submitButton = $('#modalSubmitButton');
+const submitEditButton = $('#modalSubmitEditButton');
 const pickColor = $('#colorpicker');
+
+submitEditButton.click(function(e){
+    //prevent default
+    e.preventDefault();
+});
 
 
 submitButton.click(function(e){
@@ -16,7 +22,6 @@ submitButton.click(function(e){
     $('#addNoteModal').modal('toggle');
 
     //create new note
-    console.log(noteCathegory);
     note.add(noteTitle, noteText, noteCathegory);
     
     //set color of the
