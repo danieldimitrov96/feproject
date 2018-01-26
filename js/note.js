@@ -149,6 +149,8 @@ const note = (function () {
         const titleNow = note.find('#note-title').text();
         const contentNow = note.find('#note-content').html();
         const categoryNow = note.find('#note-category-area').text();
+        const styleNow= note.css("background-color");
+        console.log(styleNow);
 
         $('#editNoteTitle').val(titleNow);
         CKEDITOR.instances.editor2.setData(contentNow);
