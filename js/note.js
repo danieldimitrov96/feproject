@@ -165,7 +165,7 @@ const note = (function () {
         CKEDITOR.instances.editor2.setData(contentNow);
        // set changed values
 
-       $( "#modalSubmitEditButton" ).click( function( e ) {
+       $( "#modalSubmitEditButton" ).one( "click", function( e ) {
            
     
     
