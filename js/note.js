@@ -165,9 +165,6 @@ const note = (function () {
        // set changed values
 
        $( "#modalSubmitEditButton" ).click( function( e ) {
-           
-    
-    
         // get values from the edit
         titleNow = $( "#editNoteTitle" ).val();
         contentNow = CKEDITOR.instances.editor2.getData();
@@ -175,15 +172,13 @@ const note = (function () {
         styleNow= $( "#colorpickerEdit" ).val();
         console.log(categoryNow);
     
-    
         // set changed values
         note.find('#note-title').text(titleNow)
         note.find('#note-content').html(contentNow);
         note.find('#note-category-area').html(`<p class="note-category-title h6 page-header">${categoryNow}</p>`);
         note.css( "background-color", styleNow);
-    })
-       
-    }
+        });
+    };
 
     return {
         'add': function add(title = null, content = null, category = null) {
