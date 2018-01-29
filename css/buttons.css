@@ -301,8 +301,8 @@
 
 .button-caution,
 .button-caution-flat {
-  background-color: #ff4351;
-  border-color: #ff4351;
+  background-color: #2A424C;
+  border-color: #2A424C;
   color: white; }
   .button-caution:visited,
   .button-caution-flat:visited {
@@ -310,16 +310,16 @@
   .button-caution:hover, .button-caution:focus,
   .button-caution-flat:hover,
   .button-caution-flat:focus {
-    background-color: #ff7680;
-    border-color: #ff7680;
+    background-color: #1BC098;
+    border-color: #1BC098;
     color: white; }
   .button-caution:active, .button-caution.active, .button-caution.is-active,
   .button-caution-flat:active,
   .button-caution-flat.active,
   .button-caution-flat.is-active {
-    background-color: #f64c59;
-    border-color: #f64c59;
-    color: #ff1022; }
+    background-color: ##1BC098;
+    border-color: ##1BC098;
+    color: ##1BC098; }
 
 .button-royal,
 .button-royal-flat {

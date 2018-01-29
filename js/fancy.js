@@ -9,7 +9,7 @@ $("#searchBox").on("keyup", function () {
 });
 
 // smooth scrooling to top on click on the logo
-$('.navbar-brand').on('click', (function () {
+$('.navbar-brand, .nav-bar-category, #searchBox').on('click', (function () {
     $('html, body').animate({
         scrollTop: 0
     }, 800);

@@ -163,6 +163,7 @@ const note = (function () {
         $("#colorpickerEdit").val(colorNow);
         $('#editNoteTitle').val(titleNow);
         CKEDITOR.instances.editor2.setData(contentNow);
+<<<<<<< HEAD
 
 
         // set changed values
@@ -190,6 +191,29 @@ const note = (function () {
         $("#modalXEditButton").on("click", removeSubmitEvent);
 
 
+=======
+       // set changed values
+
+       $( "#modalSubmitEditButton" ).one( "click", function( e ) {
+           
+    
+    
+        // get values from the edit
+        titleNow = $( "#editNoteTitle" ).val();
+        contentNow = CKEDITOR.instances.editor2.getData();
+        categoryNow = $( "#categoryEdit" ).val();
+        styleNow= $( "#colorpickerEdit" ).val();
+        console.log(categoryNow);
+    
+    
+        // set changed values
+        note.find('#note-title').text(titleNow)
+        note.find('#note-content').html(contentNow);
+        note.find('#note-category-area').html(`<p class="note-category-title h6 page-header">${categoryNow}</p>`);
+        note.css( "background-color", styleNow);
+    })
+       
+>>>>>>> c55b6e8511df59ef2eb2dd35403eb3d35c2824a8
     }
 
     return {
