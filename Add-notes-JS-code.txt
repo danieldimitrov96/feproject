@@ -1,20 +1,27 @@
-  //temaplate 
-  
-      note.add('test', 'joro e ot burgas ivan e ot burgas ivan e ot burgas ivan e ot burgas ');
-      note.add('test', 'ivan e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot burgas ');
-      note.add('test', 'petyr e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot burgas ');
-      note.add('test', 'chicho e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot burgas ');
-      note.add('test', 'ismail e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot burgas ');
-      note.add('test', 'bobi e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot burgas ');
-      note.add('test', 'sasho e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot burgas ');
-      note.add('test', 'zhitomir e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot burgas ');
-      note.add('test', 'nati e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot burgas ');
-      note.add('test', 'ivan e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot burgas ');
-      note.add('test', 'petyr e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot burgas ');
-      note.add('test', 'chicho e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot burgas ');
-      note.add('test', 'ismail e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot burgas ');
-      note.add('test', 'bobi e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot burgas ');
-      note.add('test', 'sasho e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot burgas ');
-      note.add('test', 'zhitomir e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot burgas ');
-      note.add('test', 'nati e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot burgas ');
-      note.add('test', 'daniel e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot burgas ');
+
+      note.add('test', 'joro e ot burgas ivan e ot burgas ivan e ot burgas ivan e ot burgas','Work');
+      note.add('test', 'joro e ot burgas ivan e ot burgas ivan e ot burgas ivan e ot burgas','Work');
+      note.add('test', 'joro e ot burgas ivan e ot burgas ivan e ot burgas ivan e ot burgas','Work');
+      note.add('test', 'joro e ot burgas ivan e ot burgas ivan e ot burgas ivan e ot burgas','Work');
+      note.add('test', 'joro e ot burgas ivan e ot burgas ivan e ot burgas ivan e ot burgas','Work');
+      note.add('test', 'joro e ot burgas ivan e ot burgas ivan e ot burgas ivan e ot burgas','Work');
+      note.add('test', 'joro e ot burgas ivan e ot burgas ivan e ot burgas ivan e ot burgas','Work');
+      note.add('test', 'joro e ot burgas ivan e ot burgas ivan e ot burgas ivan e ot burgas','Work');
+      note.add('test', 'joro e ot burgas ivan e ot burgas ivan e ot burgas ivan e ot burgas','Work');
+      note.add('test', 'joro e ot burgas ivan e ot burgas ivan e ot burgas ivan e ot burgas','Work');
+      note.add('test', 'ivan e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot, burgas ','To Do');
+      note.add('test', 'ivan e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot, burgas ','To Do');
+      note.add('test', 'ivan e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot, burgas ','To Do');
+      note.add('test', 'ivan e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot, burgas ','To Do');
+      note.add('test', 'ivan e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot, burgas ','To Do');
+      note.add('test', 'ivan e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot, burgas ','To Do');
+      note.add('test', 'ivan e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot, burgas ','To Do');
+      note.add('test', 'ivan e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot, burgas ','To Do');
+      note.add('test', 'petyr e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot burgas ','New Ideas');
+      note.add('test', 'petyr e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot burgas ','New Ideas');
+      note.add('test', 'petyr e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot burgas ','New Ideas');
+      note.add('test', 'petyr e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot burgas ','New Ideas');
+      note.add('test', 'petyr e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot burgas ','New Ideas');
+      note.add('test', 'petyr e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot burgas ','New Ideas');
+      note.add('test', 'petyr e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot burgas ','New Ideas');
+      note.add('test', 'petyr e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot burgas ','New Ideas');
