@@ -1,13 +1,4 @@
 /* eslint-disable */
-
-const rgb2hex =(rgb)=> {
-    rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
-    function hex(x) {
-        return ("0" + parseInt(x).toString(16)).slice(-2);
-    }
-    return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
-}
-
 const readMoreLess = function (currentNote) {
     const noteContent = currentNote.find('#note-content');
     const text = noteContent.text();
@@ -74,7 +65,7 @@ const applyHoverEffects = function (currentNote) {
 const note = (function () {
     const parent = $('.grid-row');
 
-    // HTML template for the main container.
+    // HTML template for each note's container.
     const container =
         $('<div/>').attr({
             'class': 'col-sm-3 note-container',
@@ -129,6 +120,10 @@ const note = (function () {
         content.appendTo(container.find('#note'));
     }
 
+    const setColor = function (color) {
+        container.css('background-color', color);
+    }
+
     const setDateTime = function () {
         const months = [];
         months.push("Jan");
@@ -157,9 +152,9 @@ const note = (function () {
         let titleNow = note.find('#note-title').text();
         let contentNow = note.find('#note-content').html();
         let categoryNow = note.find('#note-category-area').text();
-        let styleNow= note.css("background-color");
+        let colorNow = note.css("background-color");
         $("#categoryEdit").val(categoryNow).change();
-        $("#colorpickerEdit").val(rgb2hex(styleNow));
+        $("#colorpickerEdit").val(colorNow);
         $('#editNoteTitle').val(titleNow);
         CKEDITOR.instances.editor2.setData(contentNow);
        // set changed values
@@ -169,22 +164,22 @@ const note = (function () {
         titleNow = $( "#editNoteTitle" ).val();
         contentNow = CKEDITOR.instances.editor2.getData();
         categoryNow = $( "#categoryEdit" ).val();
-        styleNow= $( "#colorpickerEdit" ).val();
-        console.log(categoryNow);
-    
+        colorNow = $( "#colorpickerEdit" ).val();
+
         // set changed values
         note.find('#note-title').text(titleNow)
         note.find('#note-content').html(contentNow);
         note.find('#note-category-area').html(`<p class="note-category-title h6 page-header">${categoryNow}</p>`);
-        note.css( "background-color", styleNow);
+        note.css( "background-color", colorNow);
         });
     };
 
     return {
-        'add': function add(title = null, content = null, category = null) {
+        'add': function add(title = null, content = null, category = null, color) {
             addTitle(title);
             addContent(content);
             addCategory(category);
+            setColor(color);
             setDateTime();
             const noteFinal = container.clone();
             noteFinal.appendTo(parent);
