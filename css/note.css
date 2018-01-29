@@ -27,3 +27,15 @@
 .note-date-and-time:hover {
     opacity: 0.8;
 }
+
+#btn-color1 {
+    background-color: #F0F8FF;
+}
+
+#btn-color2 {
+    background-color: #FFE4C4;
+}
+
+#btn-color3 {
+    background-color: #9ACD32;
+}

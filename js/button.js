@@ -1,7 +1,12 @@
 const submitButton = $( "#modalSubmitButton" );
-const pickColor = $( "#colorpicker" );
-
 const submitEditButton = $( "#modalSubmitEditButton" );
+
+let color = "rgb(255, 255, 255)";
+
+// Event for picking a color.
+$( ".btn-group-sm > .colorpicker" ).click( function() {
+    color = $( this ).css( "background-color" );
+} );
 
 submitEditButton.click( function( e ) {
 
@@ -16,7 +21,6 @@ submitButton.click( function( e ) {
     const noteTitle = $( "#noteTitle" ).val();
     const noteText = CKEDITOR.instances.editor1.getData();
     const noteCategory = $( "#category" ).val();
-    const color = pickColor.val();
 
     // prevent default
     e.preventDefault();
@@ -26,7 +30,7 @@ submitButton.click( function( e ) {
 
     // create new note
     note.add( noteTitle, noteText, noteCategory, color );
-
+    
     // reset inputs too empty
     $( "#noteTitle" ).val( "" );
     $( "#cke_editor1" ).val( "" );

@@ -72,6 +72,7 @@
         </div>
       </div>
     </nav>
+
     <!-- Add new note button -->
     <button data-toggle='modal' data-target='#addNoteModal' type='button' id="addNote" class="button button-caution button-circle button-giant hint--error hint--top hint--bounce"
       aria-label="Add Note">
@@ -80,86 +81,6 @@
     <!-- The main grid holding all the notes. -->
     <div class="container-fluid main-container">
       <div class="row grid-row">
-
-
-        <!-- TEMPLATE NOTE 1 -->
-        <div class="col-sm-3 note-container" style="background-color: rgb(255, 0, 0);">
-          <div id="note" class="note">
-            <div class="row">
-              <div class="col-xs-8" id="note-title-area">
-                <p class="h4 page-header note-title" id="note-title">joro</p>
-              </div>
-              <div class="col-xs-4" id="note-category-area">
-                <p class="note-category-title h6 page-header">WORK</p>
-              </div>
-            </div>
-            <div class="row note-content">
-              <div class="col-sm-12">
-                <p id="note-content">
-                  <p>joro e golqm</p>
-                </p>
-              </div>
-              <div class="note-bottom" id="bottom">
-                <div class="col-xs-5">
-                  <p class="note-date-and-time" id="note-date-and-time">10:57 29-Jan-2018</p>
-                </div>
-                <div class="col-xs-7 text-right note-options" style="display: none;">
-                  <span id="expand_button" class="hint--bottom" aria-label="expand">
-                    <i class="material-icons hint--info">settings_ethernet</i>
-                  </span>
-                  <span id="edit_button" class="hint--bottom" aria-label="edit" data-toggle="modal" data-target="#editNoteModal">
-                    <i class="material-icons">mode_edit</i>
-                  </span>
-                  <span class="hint--bottom" aria-label="delete">
-                    <i id="wipe_button" class="material-icons">delete_forever</i>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- TEMPLATE NOTE 2 -->
-
-        <div class="col-sm-3 note-container" style="background-color: rgb(255, 0, 0);">
-          <div id="note" class="note">
-            <div class="row">
-              <div class="col-xs-8" id="note-title-area">
-                <p class="h4 page-header note-title" id="note-title">joro haide</p>
-              </div>
-              <div class="col-xs-4" id="note-category-area">
-                <p class="note-category-title h6 page-header">WORK</p>
-              </div>
-            </div>
-            <div class="row note-content">
-              <div class="col-sm-12">
-                <p id="note-content">
-                  <p>Joro e igrach</p>
-                </p>
-              </div>
-              <div class="note-bottom" id="bottom">
-                <div class="col-xs-5">
-                  <p class="note-date-and-time" id="note-date-and-time">10:57 29-Jan-2018</p>
-                </div>
-                <div class="col-xs-7 text-right note-options" style="display: none;">
-                  <span id="expand_button" class="hint--bottom" aria-label="expand">
-                    <i class="material-icons hint--info">settings_ethernet</i>
-                  </span>
-                  <span id="edit_button" class="hint--bottom" aria-label="edit" data-toggle="modal" data-target="#editNoteModal">
-                    <i class="material-icons">mode_edit</i>
-                  </span>
-                  <span class="hint--bottom" aria-label="delete">
-                    <i id="wipe_button" class="material-icons">delete_forever</i>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- END OF TEMPLATES -->
-
-
-
       </div>
 
       <!-- Modals -->
@@ -190,9 +111,12 @@
                     <option value="TODO">TODO</option>
                     <option value="WORK" selected>WORK</option>
                   </select>
-                  <input class='btn btn-default dropdown-toggle' id="colorpicker" value="#ff0000" type="color">
+                  <div class="btn-group btn-group-sm" role="group" aria-label="Choose color">
+                    <button id="btn-color1" type="button" class="btn btn-secondary colorpicker">aliceblue</button>
+                    <button id="btn-color2" type="button" class="btn btn-secondary colorpicker">bisque</button>
+                    <button id="btn-color3" type="button" class="btn btn-secondary colorpicker">yellowgreen</button>
+                  </div>
                 </div>
-
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -231,14 +155,16 @@
                     <option value="TODO">TODO</option>
                     <option value="WORK">WORK</option>
                   </select>
-                  <input class='btn btn-default dropdown-toggle' id="colorpickerEdit" value="#ff0000" type="color">
-
-
+                  <div class="btn-group btn-group-sm" role="group" aria-label="Choose color">
+                    <button id="btn-color1" type="button" class="btn btn-secondary colorpicker">aliceblue</button>
+                    <button id="btn-color2" type="button" class="btn btn-secondary colorpicker">bisque</button>
+                    <button id="btn-color3" type="button" class="btn btn-secondary colorpicker">yellowgreen</button>
+                  </div>
                 </div>
 
               </div>
               <div class="modal-footer">
-                <button id='modalCloseEditButton'type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button id='modalCloseEditButton' type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <button id='modalSubmitEditButton' type="submit" class="btn btn-primary">Submit</button>
               </div>
             </form>

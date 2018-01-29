@@ -41,7 +41,7 @@ const applyHoverEffects = function (currentNote) {
     const bottom = currentNote.find('#bottom');
     const noteOptions = bottom.find('.note-options'); // . > #
     noteOptions.css('display', 'none');
-    
+
     currentNote.on({
         mouseenter: function () {
             noteOptions.fadeIn(300);
@@ -53,11 +53,11 @@ const applyHoverEffects = function (currentNote) {
 
     // expand button
     const expand = bottom.find('#expand_button');
-    expand.click(function(){
+    expand.click(function () {
         if (currentNote.attr('class').includes('col-sm-3')) {
             currentNote.attr('class', 'col-sm-6');
         } else {
-            currentNote.attr('class', 'col-sm-3');  
+            currentNote.attr('class', 'col-sm-3');
         }
     });
 };
@@ -121,8 +121,14 @@ const note = (function () {
     }
 
     const setColor = function (color) {
-        container.css('background-color', color);
-    }
+        const rgb = color.split(',').map(part => part.match(/\d+/g).join(''));
+        const red = rgb[0];
+        const green = rgb[1];
+        const blue = rgb[2];
+        const opacity = 0.3;
+        const colorSet = `rgba(${red}, ${green}, ${blue}, ${opacity})`;
+        container.css('background-color', colorSet);
+    };
 
     const setDateTime = function () {
         const months = [];
@@ -157,33 +163,33 @@ const note = (function () {
         $("#colorpickerEdit").val(colorNow);
         $('#editNoteTitle').val(titleNow);
         CKEDITOR.instances.editor2.setData(contentNow);
-       
-       
+
+
         // set changed values
-        function changeOnSumbit( ) {    
+        function changeOnSubmit() {
             // get values from the edit
-            titleNow = $( "#editNoteTitle" ).val();
+            titleNow = $("#editNoteTitle").val();
             contentNow = CKEDITOR.instances.editor2.getData();
-            categoryNow = $( "#categoryEdit" ).val();
-            colorNow = $( "#colorpickerEdit" ).val();
+            categoryNow = $("#categoryEdit").val();
+            colorNow = $("#colorpickerEdit").val();
             // set changed values
             note.find('#note-title').text(titleNow)
             note.find('#note-content').html(contentNow);
             note.find('#note-category-area p').text(categoryNow);
-            note.css( "background-color", colorNow);
+            note.css("background-color", colorNow);
         }
 
-        var modalSubmit=$( "#modalSubmitEditButton" );
+        var modalSubmit = $("#modalSubmitEditButton");
 
-        function removeSubmitEvent( ){
-            modalSubmit.unbind('click', chengeOnSumbit);
+        function removeSubmitEvent() {
+            modalSubmit.unbind('click', changeOnSubmit);
         }
 
-          modalSubmit.one( "click", changeOnSumbit );
-       $( "#modalCloseEditButton" ).on( "click", removeSubmitEvent );
-       $( "#modalXEditButton" ).on( "click", removeSubmitEvent );
-       
-       
+        modalSubmit.one("click", changeOnSubmit);
+        $("#modalCloseEditButton").on("click", removeSubmitEvent);
+        $("#modalXEditButton").on("click", removeSubmitEvent);
+
+
     }
 
     return {
