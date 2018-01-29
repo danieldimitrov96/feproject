@@ -34,7 +34,7 @@
           </button>
           <a class="navbar-brand" href="#">ORGO</a>
         </div>
-        <div class="collapse navbar-collapse " id="myNavbar">
+        <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav nav-bar-category">
             <li class="active">
               <a href="#">TODO</a>
@@ -73,6 +73,86 @@
     <!-- The main grid holding all the notes. -->
     <div class="container-fluid main-container">
       <div class="row grid-row">
+
+
+        <!-- TEMPLATE NOTE 1 -->
+        <div class="col-sm-3 note-container" style="background-color: rgb(255, 0, 0);">
+          <div id="note" class="note">
+            <div class="row">
+              <div class="col-xs-8" id="note-title-area">
+                <p class="h4 page-header note-title" id="note-title">joro</p>
+              </div>
+              <div class="col-xs-4" id="note-category-area">
+                <p class="note-category-title h6 page-header">WORK</p>
+              </div>
+            </div>
+            <div class="row note-content">
+              <div class="col-sm-12">
+                <p id="note-content">
+                  <p>joro e golqm</p>
+                </p>
+              </div>
+              <div class="note-bottom" id="bottom">
+                <div class="col-xs-5">
+                  <p class="note-date-and-time" id="note-date-and-time">10:57 29-Jan-2018</p>
+                </div>
+                <div class="col-xs-7 text-right note-options" style="display: none;">
+                  <span id="expand_button" class="hint--bottom" aria-label="expand">
+                    <i class="material-icons hint--info">settings_ethernet</i>
+                  </span>
+                  <span id="edit_button" class="hint--bottom" aria-label="edit" data-toggle="modal" data-target="#editNoteModal">
+                    <i class="material-icons">mode_edit</i>
+                  </span>
+                  <span class="hint--bottom" aria-label="delete">
+                    <i id="wipe_button" class="material-icons">delete_forever</i>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TEMPLATE NOTE 2 -->
+
+        <div class="col-sm-3 note-container" style="background-color: rgb(255, 0, 0);">
+          <div id="note" class="note">
+            <div class="row">
+              <div class="col-xs-8" id="note-title-area">
+                <p class="h4 page-header note-title" id="note-title">joro haide</p>
+              </div>
+              <div class="col-xs-4" id="note-category-area">
+                <p class="note-category-title h6 page-header">WORK</p>
+              </div>
+            </div>
+            <div class="row note-content">
+              <div class="col-sm-12">
+                <p id="note-content">
+                  <p>Joro e igrach</p>
+                </p>
+              </div>
+              <div class="note-bottom" id="bottom">
+                <div class="col-xs-5">
+                  <p class="note-date-and-time" id="note-date-and-time">10:57 29-Jan-2018</p>
+                </div>
+                <div class="col-xs-7 text-right note-options" style="display: none;">
+                  <span id="expand_button" class="hint--bottom" aria-label="expand">
+                    <i class="material-icons hint--info">settings_ethernet</i>
+                  </span>
+                  <span id="edit_button" class="hint--bottom" aria-label="edit" data-toggle="modal" data-target="#editNoteModal">
+                    <i class="material-icons">mode_edit</i>
+                  </span>
+                  <span class="hint--bottom" aria-label="delete">
+                    <i id="wipe_button" class="material-icons">delete_forever</i>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END OF TEMPLATES -->
+
+
+
       </div>
       <!-- Modals -->
       <!-- Add Note Modal -->
@@ -120,10 +200,10 @@
           <div class="modal-content">
             <form>
               <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button id='modalXEditButton' type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="editNoteModalLabel">Create Note</h4>
+                <h4 class="modal-title" id="editNoteModalLabel">Edit Note</h4>
               </div>
               <div class="modal-body">
                 <div class='form-group'>
@@ -144,7 +224,7 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button id='modalCloseEditButton'type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <button id='modalSubmitEditButton' type="submit" class="btn btn-primary">Submit</button>
               </div>
             </form>
