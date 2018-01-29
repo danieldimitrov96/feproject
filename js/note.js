@@ -157,22 +157,34 @@ const note = (function () {
         $("#colorpickerEdit").val(colorNow);
         $('#editNoteTitle').val(titleNow);
         CKEDITOR.instances.editor2.setData(contentNow);
-       // set changed values
-
-       $( "#modalSubmitEditButton" ).one( "click", function( e ) {
-        // get values from the edit
-        titleNow = $( "#editNoteTitle" ).val();
-        contentNow = CKEDITOR.instances.editor2.getData();
-        categoryNow = $( "#categoryEdit" ).val();
-        colorNow = $( "#colorpickerEdit" ).val();
-
+       
+       
         // set changed values
-        note.find('#note-title').text(titleNow)
-        note.find('#note-content').html(contentNow);
-        note.find('#note-category-area').html(`<p class="note-category-title h6 page-header">${categoryNow}</p>`);
-        note.css( "background-color", colorNow);
-        });
-    };
+        function changeOnSumbit( ) {    
+            // get values from the edit
+            titleNow = $( "#editNoteTitle" ).val();
+            contentNow = CKEDITOR.instances.editor2.getData();
+            categoryNow = $( "#categoryEdit" ).val();
+            colorNow = $( "#colorpickerEdit" ).val();
+            // set changed values
+            note.find('#note-title').text(titleNow)
+            note.find('#note-content').html(contentNow);
+            note.find('#note-category-area p').text(categoryNow);
+            note.css( "background-color", colorNow);
+        }
+
+        var modalSubmit=$( "#modalSubmitEditButton" );
+
+        function removeSubmitEvent( ){
+            modalSubmit.unbind('click', chengeOnSumbit);
+        }
+
+          modalSubmit.one( "click", changeOnSumbit );
+       $( "#modalCloseEditButton" ).on( "click", removeSubmitEvent );
+       $( "#modalXEditButton" ).on( "click", removeSubmitEvent );
+       
+       
+    }
 
     return {
         'add': function add(title = null, content = null, category = null, color) {
