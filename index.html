@@ -39,14 +39,17 @@
         </div>
         <div class="collapse navbar-collapse " id="myNavbar">
           <ul class="nav navbar-nav nav-bar-category">
-            <li class="active">
+            <li>
               <a href="#">TODO</a>
             </li>
             <li>
-              <a href="#">Work</a>
+              <a href="#">WORK</a>
             </li>
             <li>
-              <a href="#">New Ideas</a>
+              <a href="#">NEW IDEAS</a>
+            </li>
+            <li class="active">
+              <a href="#">SHOW ALL</a>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -57,7 +60,7 @@
                   <span class="input-group-addon">
                     <i class="glyphicon glyphicon-search"></i>
                   </span>
-                  <input id="searchBox" type="text" class="form-control" placeholder="Search" name="q">
+                  <input id="searchBox" type="text" class="form-control" placeholder="Search" onkeypress="return event.keyCode!=13">
                 </div>
               </form>
             </li>
