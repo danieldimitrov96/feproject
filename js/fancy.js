@@ -1,5 +1,9 @@
 /* eslint-disable */
 
+//TODO : 1.add background option
+//TODO : 2.add animation when creating notes
+//TODO : 3.change animation speed option
+
 // CAN BE CHANGED IN OPIONS MENU
 ANIMATION_SPEED = 580;
 
@@ -74,11 +78,13 @@ $navli.on("click", function () {
             $newIdeas.hide(ANIMATION_SPEED);
             break;
         case 'WORK':
+            $work.hide(ANIMATION_SPEED);
             $todo.hide(ANIMATION_SPEED);
             $work.show(ANIMATION_SPEED);
             $newIdeas.hide(ANIMATION_SPEED);
             break;
         case 'NEW IDEAS':
+            $newIdeas.hide(ANIMATION_SPEED);
             $todo.hide(ANIMATION_SPEED);
             $work.hide(ANIMATION_SPEED);
             $newIdeas.show(ANIMATION_SPEED);
