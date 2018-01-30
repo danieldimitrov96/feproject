@@ -28,10 +28,45 @@ $('#navBar').affix({
     }
 })
 
+
+for (let i = 0; i < 3; i++) {
+    note.add('test', 'joro e ot burgas ivan e ot burgas ivan e ot burgas ivan e ot burgas', 'WORK');
+    note.add('test', 'petyr e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot burgas ', 'NEW IDEAS');
+    note.add('test', 'ismail e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot, burgas ', 'TODO');
+
+}
+
 //change active button 
 let navli = $(".nav-bar-category li");
 
 navli.on("click", function () {
     navli.removeClass("active");
     $(this).addClass("active");
+    let selectedCategory = ($(this).text().trim());
+
+    $('.note-category-title').each(function () {
+        if (selectedCategory === 'SHOW ALL') {
+            $(this).closest('.note-container').show();
+            //todo sort 
+
+
+
+
+        } else if ($(this).text().trim() === selectedCategory)
+            $(this).closest('.note-container').show();
+        else {
+            $(this).closest('.note-container').hide();
+        }
+    })
+
+
+
+
+
+
+    //     if (noteClass === 'active') {
+    //     console.log('active');
+    // }
+    // $(this).toggle();
+
 });
