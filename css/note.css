@@ -20,6 +20,10 @@
     word-wrap: break-word;
 }
 
+.note-content {
+    font-size: 10px;
+}
+
 .note-category-title {
     margin-top: 4.5em;
     opacity: 0.5;
@@ -27,10 +31,6 @@
 
 .note-category-title:hover {
     opacity: 0.8;
-}
-
-.read-more-less {
-    color: red;
 }
 
 .note-date-and-time {
@@ -41,14 +41,18 @@
     opacity: 0.8;
 }
 
-#btn-color1 {
-    background-color: #F0F8FF;
+.btn-color1 {
+    background-color: #FFFF87;
 }
 
-#btn-color2 {
-    background-color: #FFE4C4;
+.btn-color2 {
+    background-color: #FF8070;
 }
 
-#btn-color3 {
-    background-color: #9ACD32;
+.btn-color3 {
+    background-color: #C2FF8D;
+}
+
+.btn-color4 {
+    background-color: #FAFAF9;
 }

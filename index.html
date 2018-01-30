@@ -21,10 +21,11 @@
   <script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
 
 </head>
+
 <body>
   <div class='container-fluid body-wrapper'>
     <!-- Navbar -->
-    <nav  id="navBar"class="navbar navbar-inverse navbar-fixed-top navbar-custom">
+    <nav id="navBar" class="navbar navbar-inverse navbar-fixed-top navbar-custom logo">
       <div class="container-fluid">
         <div class="navbar-header page-scroll">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -32,7 +33,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">ORGO</a>
+          <a class="navbar-brand img-responsive " href="#">
+            ORGO
+          </a>
         </div>
         <div class="collapse navbar-collapse " id="myNavbar">
           <ul class="nav navbar-nav nav-bar-category">
@@ -102,10 +105,27 @@
                     <option value="TODO">TODO</option>
                     <option value="WORK" selected>WORK</option>
                   </select>
-                  <div class="btn-group btn-group-sm" role="group" aria-label="Choose color">
-                    <button id="btn-color1" type="button" class="btn btn-secondary colorpicker">aliceblue</button>
-                    <button id="btn-color2" type="button" class="btn btn-secondary colorpicker">bisque</button>
-                    <button id="btn-color3" type="button" class="btn btn-secondary colorpicker">yellowgreen</button>
+                  <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-color4 active">
+                      <input name="color-four" type="radio" autocomplete="off" checked>
+                      <span class="glyphicon glyphicon-ok"></span>
+                    </label>
+
+                    <label class="btn btn-color1">
+                      <input name="color-one" type="radio" autocomplete="off">
+                      <span class="glyphicon glyphicon-ok"></span>
+                    </label>
+
+                    <label class="btn btn-color2">
+                      <input name="color-two" type="radio" autocomplete="off">
+                      <span class="glyphicon glyphicon-ok"></span>
+                    </label>
+
+                    <label class="btn btn-color3">
+                      <input name="color-three" type="radio" autocomplete="off">
+                      <span class="glyphicon glyphicon-ok"></span>
+                    </label>
+
                   </div>
                 </div>
               </div>
@@ -145,10 +165,27 @@
                     <option value="TODO">TODO</option>
                     <option value="WORK">WORK</option>
                   </select>
-                  <div class="btn-group btn-group-sm" role="group" aria-label="Choose color">
-                    <button id="btn-color1" type="button" class="btn btn-secondary colorpicker">aliceblue</button>
-                    <button id="btn-color2" type="button" class="btn btn-secondary colorpicker">bisque</button>
-                    <button id="btn-color3" type="button" class="btn btn-secondary colorpicker">yellowgreen</button>
+                  <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-color4 active">
+                      <input name="color-four" type="radio" autocomplete="off" checked>
+                      <span class="glyphicon glyphicon-ok"></span>
+                    </label>
+
+                    <label class="btn btn-color1">
+                      <input name="color-one" type="radio" autocomplete="off">
+                      <span class="glyphicon glyphicon-ok"></span>
+                    </label>
+
+                    <label class="btn btn-color2">
+                      <input name="color-two" type="radio" autocomplete="off">
+                      <span class="glyphicon glyphicon-ok"></span>
+                    </label>
+
+                    <label class="btn btn-color3">
+                      <input name="color-three" type="radio" autocomplete="off">
+                      <span class="glyphicon glyphicon-ok"></span>
+                    </label>
+
                   </div>
                 </div>
               </div>
@@ -166,12 +203,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/load-content.js"
+    <script src="js/load-content.js "></script>
     <script src="js/note.js"></script>
     <script src="js/button.js"></script>
     <script src="js/modal-fix.js"></script>
     <script src="js/fancy.js"></script>
-    <script src="https://cdn.ckeditor.com/4.8.0/basic/ckeditor.js"></script>
+    <script src="js/ckeditor.js"></script>
     <script>
       CKEDITOR.replace('editor1');
       CKEDITOR.replace('editor2');

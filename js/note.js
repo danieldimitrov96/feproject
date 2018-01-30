@@ -18,12 +18,16 @@ const readMoreLess = function (currentNote) {
                 secondPart.hide(150);
                 dots.css('display', '');
             }
-        })
+        });
     }
 };
 
 const applyButtonsEvents = function (currentNote) {
+    const title = currentNote.find('#note-title-area');
+    const category = currentNote.find('#note-category-area');
+    const bottom = currentNote.find('#bottom');
     const wipeButton = currentNote.find('#wipe_button');
+
     wipeButton.click(function () {
         currentNote.fadeOut(500);
         setTimeout(function () {
@@ -34,6 +38,20 @@ const applyButtonsEvents = function (currentNote) {
     const editButton = currentNote.find('#edit_button');
     editButton.click(function () {
         note.addCurrentInputInEditModal(currentNote);
+    });
+
+    // expand button
+    const expand = bottom.find('#expand_button');
+    expand.click(function () {
+        if (currentNote.attr('class').includes('col-sm-4')) {
+            currentNote.attr('class', 'col-sm-8');
+            title.attr('class', 'col-xs-10');
+            category.attr('class', 'col-xs-2');
+        } else {
+            currentNote.attr('class', 'col-sm-4');
+            title.attr('class', 'col-xs-8');
+            category.attr('class', 'col-xs-4');
+        }
     });
 }
 
@@ -48,16 +66,6 @@ const applyHoverEffects = function (currentNote) {
         },
         mouseleave: function () {
             noteOptions.fadeOut(300);
-        }
-    });
-
-    // expand button
-    const expand = bottom.find('#expand_button');
-    expand.click(function () {
-        if (currentNote.attr('class').includes('col-sm-4')) {
-            currentNote.attr('class', 'col-sm-8');
-        } else {
-            currentNote.attr('class', 'col-sm-4');
         }
     });
 };
@@ -100,24 +108,65 @@ const note = (function () {
     }));
 
     // HTML template for the bottom.
-    // TODO: It's ugly. Rewrite it.
-    const bottom = $('<div class="note-bottom" id="bottom"\><div class=\'col-xs-5\'><p class=\'note-date-and-time\' id="note-date-and-time"></p></div><div class="col-xs-7 text-right note-options"><span id="expand_button" class="hint--bottom" aria-label="expand"><i class="material-icons hint--info">settings_ethernet</i></span><span id="edit_button" class="hint--bottom" aria-label="edit" data-toggle="modal" data-target="#editNoteModal"><i class="material-icons">mode_edit</i></span><span class="hint--bottom" aria-label="delete"><i id="wipe_button" class="material-icons">delete_forever</i></span></div></div>');
+    const bottom = $('<div/>').attr({
+        'class': 'note-bottom',
+        'id': 'bottom',
+    });
+    const noteDateAndTime = $('<div/>').attr({
+        'class': 'col-xs-5',
+    }).append($('</p>').attr({
+        'class': 'note-date-and-time',
+        'id': 'note-date-and-time',
+    }));
+    const noteOptions = $('<div/>').attr({
+        'class': 'col-xs-7 text-right note-options',
+    });
 
-    const dateTime = bottom.find('#note-date-and-time');
+    const expandButton = $('<span/>').attr({
+        'id': 'expand_button',
+        'class': 'hint--bottom',
+        'aria-label': 'expand',
+    }).append($('<i/>').attr({
+        'class': 'material-icons',
+    }).html('settings_ethernet'));
+
+    const editButton = $('<span/>').attr({
+        'id': 'edit_button',
+        'class': 'hint--bottom',
+        'aria-label': 'edit',
+        'data-toggle': 'modal',
+        'data-target': '#editNoteModal',
+    }).append($('<i/>').attr({
+        'class': 'material-icons hint--info',
+    }).html('mode_edit'));
+
+    const wipeButton = $('<span/>').attr({
+        'id': 'wipe_button',
+        'class': 'hint--bottom',
+        'aria-label': 'delete',
+    }).append($('<i/>').attr({
+        'class': 'material-icons hint--info',
+    }).html('delete_forever'));
+
+    noteOptions.append(expandButton, editButton, wipeButton);
+    bottom.append(noteDateAndTime, noteOptions);
+
+    // Putting everything inside the note container.
+    title.appendTo(container.find('#note'));
+    content.appendTo(container.find('#note'));
+    bottom.appendTo(container.find('.note-content'));
 
     const addTitle = function (text) {
         title.find('#note-title').html($.parseHTML(text));
-        title.appendTo(container.find('#note'));
     };
 
     const addCategory = function (str) {
-        title.find('#note-category-area').html($('</p>').attr('class', 'note-category-title h6 page-header').text(str));
+        title.find('#note-category-area').html($('</p>').attr('class', 'note-category-title h6 page-header text-sm-left').text(str));
     }
 
     const addContent = function (text) {
         const noteContent = content.find('#note-content');
         noteContent.html($.parseHTML(text));
-        content.appendTo(container.find('#note'));
     }
 
     const setColor = function (color) {
@@ -125,9 +174,11 @@ const note = (function () {
         const red = rgb[0];
         const green = rgb[1];
         const blue = rgb[2];
-        const opacity = 0.3;
+        const opacity = 0.8;
         const colorSet = `rgba(${red}, ${green}, ${blue}, ${opacity})`;
         container.find('#note').css('background-color', colorSet);
+
+        return colorSet;
     };
 
     const setDateTime = function () {
@@ -146,8 +197,8 @@ const note = (function () {
         months.push("Dec");
 
         const date = new Date();
+        const dateTime = bottom.find('#note-date-and-time');
         dateTime.text(`${date.getHours()}:${date.getMinutes()} ${date.getDate()}-${months[date.getMonth()]}-${date.getFullYear()}`);
-        bottom.appendTo(container.find('.note-content'));
     };
 
     const wipe = function (note) {
@@ -158,28 +209,41 @@ const note = (function () {
         let titleNow = note.find('#note-title').text();
         let contentNow = note.find('#note-content').html();
         let categoryNow = note.find('#note-category-area').text();
-        let styleNow = note.css("background-color");
-        $("#categoryEdit").val(categoryNow).change();
-        // $("#colorpickerEdit").val(rgb2hex(styleNow));
+        let styleNow = note.find('#note').css("background-color");
+
         $('#editNoteTitle').val(titleNow);
+        $("#categoryEdit").val(categoryNow).change();
         CKEDITOR.instances.editor2.setData(contentNow);
 
-        // set changed values
+        const modal = $('#editNoteModal');
+
+        // mark the current color.
+        modal.find('.btn-group > label').each(function () {
+            if ($(this).hasClass('active')) {
+                if (setColor($(this).css('background-color')) !== styleNow) {
+                    $(this).removeClass('active');
+                }
+            } else {
+                if (setColor($(this).css('background-color')) === styleNow) {
+                    $(this).addClass('active');
+                }
+            }
+        });
+
         $("#modalSubmitEditButton").one("click", function (e) {
 
             // get values from the edit
-            titleNow = $("#editNoteTitle").val();
+            titleNow = modal.find("#editNoteTitle").val();
             contentNow = CKEDITOR.instances.editor2.getData();
-            categoryNow = $("#categoryEdit").val();
-            styleNow = $("#colorpickerEdit").val();
-            console.log(categoryNow);
 
+            styleNow = modal.find(".btn-group > .active").css("background-color");
+            styleNow = setColor(styleNow);
 
             // set changed values
             note.find('#note-title').text(titleNow)
             note.find('#note-content').html(contentNow);
             note.find('#note-category-area').html(`<p class="note-category-title h6 page-header">${categoryNow}</p>`);
-            note.css("background-color", styleNow);
+            note.find('.note').css("background-color", styleNow);
         });
     };
 

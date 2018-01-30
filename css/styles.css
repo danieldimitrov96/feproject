@@ -1,3 +1,7 @@
+body {
+    background-image: url('../img/bg3.gif');
+}
+
 .main-container {
     padding: 0;
     margin-top: 7%;
@@ -5,7 +9,14 @@
     margin-right: 0.5%;
 }
 
-body {
-    /* background-image: url(../img/bg-pattern.jpg); */
-    /* background-repeat: repeat;   */
+img {
+    width: 100%;
+}
+
+.btn span.glyphicon {
+	opacity: 0;
+}
+
+.btn.active span.glyphicon {
+	opacity: 1;
 }
