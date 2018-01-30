@@ -1,5 +1,6 @@
 body {
-    background-image: url('../img/bg3.gif');
+    /* background-image: url('../img/bg3.gif'); */
+    background-color: white;
 }
 
 .main-container {

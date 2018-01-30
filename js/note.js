@@ -174,7 +174,7 @@ const note = (function () {
         const red = rgb[0];
         const green = rgb[1];
         const blue = rgb[2];
-        const opacity = 0.8;
+        const opacity = 1;
         const colorSet = `rgba(${red}, ${green}, ${blue}, ${opacity})`;
         container.find('#note').css('background-color', colorSet);
 
@@ -248,7 +248,7 @@ const note = (function () {
     };
 
     return {
-        'add': function add(title = null, content = null, category = null, color) {
+        'add': function add(title = null, content = null, category = null, color = 'rgb(250,250,249)') {
             addTitle(title);
             addContent(content);
             addCategory(category);
