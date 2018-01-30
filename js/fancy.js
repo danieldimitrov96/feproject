@@ -13,10 +13,19 @@ $("#searchBox").on("keyup", function () {
             if ($this.html().indexOf('SHOW ALL') > -1)
                 $this.addClass("active");
         });
-        $('.note-category-title').each(() => $(this).closest('.note-container').show());
+        $('#todo').show();
+        $('#work').show();
+        $('#new-ideas').show();
+        // $('.note-category-title').each(() => $(this).closest('.note-container').show());
     } else {
         $(".note-container").each(function () {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            if ($(this).text().toLowerCase().indexOf(value) > -1) {
+                $(this).show();
+            } else {
+                $(this).hide();
+                
+
+            }
         });
     };
 })
@@ -60,7 +69,7 @@ navli.on("click", function () {
 
     let selectedCategory = ($(this).text().trim());
     switch (selectedCategory) {
-        case 'TODO': 
+        case 'TODO':
             $('#todo').show();
             $('#work').hide();
             $('#new-ideas').hide();
@@ -75,7 +84,7 @@ navli.on("click", function () {
             $('#work').hide();
             $('#new-ideas').show();
             break;
-        default: 
+        default:
             $('#todo').show();
             $('#work').show();
             $('#new-ideas').show();
