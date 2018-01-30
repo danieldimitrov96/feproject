@@ -1,8 +1,9 @@
 /* eslint-disable */
 
 //TODO : 1.add background option
-//TODO : 2.add animation when creating notes
-//TODO : 3.change animation speed option
+//TODO : 2. fix container-note size
+//TODO : 3. add animation when creating notes
+//TODO : 4. change animation speed option
 
 // CAN BE CHANGED IN OPIONS MENU
 ANIMATION_SPEED = 580;
