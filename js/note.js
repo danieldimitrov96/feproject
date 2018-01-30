@@ -2,7 +2,7 @@
 const readMoreLess = function (currentNote) {
     const noteContent = currentNote.find('#note-content');
     const text = noteContent.text();
-
+    
     if (text.length > 250) {
         const firstPart = $('<span/>').attr('id', 'first-part').text(text.substr(0, 250));
         const secondPart = $('<span/>').attr('id', 'second-part').text(text.substr(250, text.length));
@@ -71,7 +71,8 @@ const applyHoverEffects = function (currentNote) {
 };
 
 const note = (function () {
-    const parent = $('.grid-row');
+    let parent = $('.grid-row');
+    let targetParent;
 
     // HTML template for each note's container.
     const container =
@@ -161,6 +162,12 @@ const note = (function () {
     };
 
     const addCategory = function (str) {
+        switch(str) {
+            case 'TODO': targetParent = parent.find('#todo'); break;
+            case 'WORK': targetParent = parent.find('#work'); break;
+            case 'NEW IDEAS': targetParent = parent.find('#new-ideas'); break;
+            default: targetParent = parent.find('#todo');
+        }
         title.find('#note-category-area').html($('</p>').attr('class', 'note-category-title h6 page-header text-sm-left').text(str));
     }
 
@@ -251,11 +258,11 @@ const note = (function () {
         'add': function add(title = null, content = null, category = null, color = 'rgb(250,250,249)') {
             addTitle(title);
             addContent(content);
-            addCategory(category);
+            let targetParent = addCategory(category);
             setColor(color);
             setDateTime();
             const noteFinal = container.clone();
-            noteFinal.appendTo(parent);
+            noteFinal.prependTo(targetParent);
             applyButtonsEvents(noteFinal);
             applyHoverEffects(noteFinal);
             readMoreLess(noteFinal);
