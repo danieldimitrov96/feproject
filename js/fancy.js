@@ -1,11 +1,15 @@
 /* eslint-disable */
 
-// Search nav bar
+// CAN BE CHANGED IN OPIONS MENU
+ANIMATION_SPEED = 580;
+
+//variables
 let $navli = $('.nav-bar-category li');
 let $todo = $('#todo');
 let $work = $('#work');
 let $newIdeas = $('#new-ideas');
 
+// Search nav bar
 $('#searchBox').on('keyup', function () {
     var value = $(this).val().toLowerCase();
     if (value === '') {
@@ -15,16 +19,16 @@ $('#searchBox').on('keyup', function () {
             if ($this.html().indexOf('SHOW ALL') > -1)
                 $this.addClass('active');
         });
-        $todo.show();
-        $work.show();
-        $newIdeas.show();
-        // $('.note-category-title').each(() => $(this).closest('.note-container').show());
+        $todo.show(ANIMATION_SPEED);
+        $work.show(ANIMATION_SPEED);
+        $newIdeas.show(ANIMATION_SPEED);
+        // $('.note-category-title').each(() => $(this).closest('.note-container').show(ANIMATION_SPEED));
     } else {
         $('.note-container').each(function () {
             if ($(this).text().toLowerCase().indexOf(value) > -1) {
-                $(this).parent().show();
+                $(this).parent().show(ANIMATION_SPEED);
             } else {
-                $(this).parent().hide();
+                $(this).parent().hide(ANIMATION_SPEED);
             }
         });
     };
@@ -64,24 +68,26 @@ $navli.on("click", function () {
     let selectedCategory = ($(this).text().trim());
     switch (selectedCategory) {
         case 'TODO':
-            $todo.show();
-            $work.hide();
-            $newIdeas.hide();
+            $todo.hide(ANIMATION_SPEED);
+            $todo.show(ANIMATION_SPEED);
+            $work.hide(ANIMATION_SPEED);
+            $newIdeas.hide(ANIMATION_SPEED);
             break;
         case 'WORK':
-            $todo.hide();
-            $work.show();
-            $newIdeas.hide();
+            $todo.hide(ANIMATION_SPEED);
+            $work.show(ANIMATION_SPEED);
+            $newIdeas.hide(ANIMATION_SPEED);
             break;
         case 'NEW IDEAS':
-            $todo.hide();
-            $work.hide();
-            $newIdeas.show();
+            $todo.hide(ANIMATION_SPEED);
+            $work.hide(ANIMATION_SPEED);
+            $newIdeas.show(ANIMATION_SPEED);
             break;
         default:
-            $todo.show();
-            $work.show();
-            $newIdeas.show();
+            $todo.hide(ANIMATION_SPEED);
+            $todo.show(ANIMATION_SPEED);
+            $work.show(ANIMATION_SPEED);
+            $newIdeas.show(ANIMATION_SPEED);
             break;
     }
 });
