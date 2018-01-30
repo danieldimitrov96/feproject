@@ -59,16 +59,26 @@ navli.on("click", function () {
     $(this).addClass("active");
 
     let selectedCategory = ($(this).text().trim());
-
-    $('.note-category-title').each(function () {
-        if (selectedCategory === 'SHOW ALL') {
-            $(this).closest('.note-container').show();
-            //todo sort 
-        } else if ($(this).text().trim() === selectedCategory)
-            $(this).closest('.note-container').show();
-        else {
-            $(this).closest('.note-container').hide();
-        }
-    })
-
+    switch (selectedCategory) {
+        case 'TODO': 
+            $('#todo').show();
+            $('#work').hide();
+            $('#new-ideas').hide();
+            break;
+        case 'WORK':
+            $('#todo').hide();
+            $('#work').show();
+            $('#new-ideas').hide();
+            break;
+        case 'NEW IDEAS':
+            $('#todo').hide();
+            $('#work').hide();
+            $('#new-ideas').show();
+            break;
+        default: 
+            $('#todo').show();
+            $('#work').show();
+            $('#new-ideas').show();
+            break;
+    }
 });

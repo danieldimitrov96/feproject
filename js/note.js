@@ -258,7 +258,7 @@ const note = (function () {
         'add': function add(title = null, content = null, category = null, color = 'rgb(250,250,249)') {
             addTitle(title);
             addContent(content);
-            let targetParent = addCategory(category);
+            addCategory(category);
             setColor(color);
             setDateTime();
             const noteFinal = container.clone();
