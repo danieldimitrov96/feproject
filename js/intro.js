@@ -5,13 +5,19 @@ var runIntro = function () {
   
   var messageAr = [
     ['THIS IS ORGO',],
-    ['ORGO is a single page aplication',], 
+    ['ORGO is a single page application',], 
     ['ORGO can add notes',], 
-    ['','#addNote'], 
+    ['','#addNote',],
+    ['','','#addNote'],
+    ['','#noteTitle'],
+    ['','#noteContent'],
+    ['','#category'],
+    ['','#color'],
+    ['','','#modalCloseButton'],   
     ['ORGO can also edit them',], 
     ['ORGO can search the notes',], 
     ['','#searchBox'], 
-    ['every note in ordo has a cathegory',],
+    ['every note in ordo has a category',],
     ['ORGO can filter the notes using the category',], 
     ['','.nav-bar-category'], 
     ['ORGO can also change the background of the work space',], 
@@ -20,15 +26,13 @@ var runIntro = function () {
   ];
 
   function setupIntro() {
-    var btnSkip = $('<button>').text('skip intro').attr({
+    var btnSkip = $('<button>').text('skip').attr({
       'class': 'skipButton button button-caution  button-giant '
     }).css({
       'position': 'fixed',
       'z-index': '200',
       'display': 'block',
-      'left': '44%',
       'top': '88%',
-
     });
 
     var introWrapper = $('<div/>').attr({
@@ -41,7 +45,11 @@ var runIntro = function () {
       'margin': '0',
       'pading': '0',
       'background-color': '#fff',
+      'display': 'flex',
+      'align-items': 'center',
+      'justify-content': 'center',
     });
+
     var background = $('<div/>').css({
       'height': '100vh',
       'width': '100%',
@@ -56,14 +64,13 @@ var runIntro = function () {
     var text = $('<p>').attr('class', 'introText')
       .text(messageAr[0][0].toUpperCase()).css({
         'font-size': '7vw',
+        'position': 'fixed',        
         'line-height': 'auto',
         'z-index': '101',
-        'position': 'relative',
-        'float': 'left',
-        'top': '33%',
-        'left': '50%',
-        'transform': 'translate(-50%, -50%)',
         'text-align': 'center',
+        'margin': '0',
+        'pading': '0',
+        'width' : '70%'
       });
 
     //combine elements in into div
@@ -73,7 +80,7 @@ var runIntro = function () {
     $('body').prepend(introWrapper);
 
     //add event listeners
-    $('.skipButton').on('click', function () {
+    $('.skipButton').on('mouseup', function () {
       $('.introWrapper').remove();
     })
 
@@ -88,10 +95,14 @@ var runIntro = function () {
         return  ;
       }
       
+      // duration/=2;
       if(messageAr[i][1]){
         $('.introWrapper').toggle();
-        $(messageAr[i][1]).fadeIn(1000).fadeOut(1000).fadeIn(1000).fadeOut(1000).fadeIn(1000);
+        $(messageAr[i][1]).fadeIn(500).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500);
+      }else if(messageAr[i][2]){
+        $(messageAr[i][2]).trigger('click');
       }else{
+        // duration*=2;
         if( $( ".introWrapper" ).is( ":hidden" )){
           $('.introWrapper').toggle();
         }
@@ -101,7 +112,7 @@ var runIntro = function () {
     }, 6000);
     
   }
-  cycleMessages(1,5000);
+  cycleMessages(1,2000);
 
 }
 

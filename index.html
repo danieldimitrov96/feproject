@@ -102,11 +102,11 @@
                 <h4 class="modal-title" id="myModalLabel">Create Note</h4>
               </div>
               <div class="modal-body">
-                <div class='form-group'>
+                <div id='noteTitle' class='form-group'>
                   <label>Note Title</label>
-                  <input id='noteTitle' type="text" class="form-control" placehoulder="Note Title">
+                  <input  type="text" class="form-control" placehoulder="Note Title">
                 </div>
-                <div class='form-group'>
+                <div id='noteContent' class='form-group'>
                   <label>Note Text</label>
                   <textarea name='editor1' type="text" class="form-control" placehoulder="Note Body"></textarea>
                 </div>
@@ -116,7 +116,7 @@
                     <option value="TODO">TODO</option>
                     <option value="WORK" selected>WORK</option>
                   </select>
-                  <div class="btn-group" data-toggle="buttons">
+                  <div id='color' class="btn-group" data-toggle="buttons">
                     <label class="btn btn-color4 active">
                       <input name="color-four" type="radio" autocomplete="off" checked>
                       <span class="glyphicon glyphicon-ok"></span>
@@ -141,7 +141,7 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button id='modalCloseButton' type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <button id='modalSubmitButton' type="submit" class="btn btn-primary">Submit</button>
               </div>
             </form>

@@ -23,3 +23,10 @@ img {
 .btn.active span.glyphicon {
 	opacity: 1;
 }
+
+.introWrapper{
+    -webkit-transition: background 300ms ease-in-out 400ms;
+    -moz-transition: background 300ms ease-in-out 400ms;
+    -o-transition: background 300ms ease-in-out 400ms;
+    transition: background 300ms ease-in-out 400ms;
+}
