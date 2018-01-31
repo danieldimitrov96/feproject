@@ -1,3 +1,0 @@
-$(document).ready(function() {
-    $('#some-menu').load('some-local-path/menu.html');
-});

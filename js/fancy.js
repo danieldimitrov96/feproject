@@ -73,24 +73,28 @@ $navli.on("click", function () {
     let selectedCategory = ($(this).text().trim());
     switch (selectedCategory) {
         case 'TODO':
+            document.title = "ORGO - TODO";
             $todo.hide(ANIMATION_SPEED);
             $todo.show(ANIMATION_SPEED);
             $work.hide(ANIMATION_SPEED);
             $newIdeas.hide(ANIMATION_SPEED);
             break;
         case 'WORK':
+            document.title = "ORGO - Work";
             $work.hide(ANIMATION_SPEED);
             $todo.hide(ANIMATION_SPEED);
             $work.show(ANIMATION_SPEED);
             $newIdeas.hide(ANIMATION_SPEED);
             break;
         case 'NEW IDEAS':
+            document.title = "ORGO - New ideas";
             $newIdeas.hide(ANIMATION_SPEED);
             $todo.hide(ANIMATION_SPEED);
             $work.hide(ANIMATION_SPEED);
             $newIdeas.show(ANIMATION_SPEED);
             break;
         default:
+            document.title = "ORGO - Show all";
             $todo.hide(ANIMATION_SPEED);
             $todo.show(ANIMATION_SPEED);
             $work.show(ANIMATION_SPEED);
