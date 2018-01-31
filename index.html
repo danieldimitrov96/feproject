@@ -40,14 +40,18 @@
         <div class="collapse navbar-collapse " id="myNavbar">
           <ul class="nav navbar-nav nav-bar-category">
             <li class="active">
+              <a href="#">SHOW ALL</a>
+            </li>
+            <li>
               <a href="#">TODO</a>
             </li>
             <li>
-              <a href="#">Work</a>
+              <a href="#">WORK</a>
             </li>
             <li>
-              <a href="#">New Ideas</a>
+              <a href="#">NEW IDEAS</a>
             </li>
+
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
@@ -69,6 +73,7 @@
         </div>
       </div>
     </nav>
+
     <!-- Add new note button -->
     <button data-toggle='modal' data-target='#addNoteModal' type='button' id="addNote" class="button button-caution button-circle button-giant hint--error hint--top hint--bounce"
       aria-label="Add Note">
@@ -76,6 +81,12 @@
     <!-- The main grid holding all the notes. -->
     <div class="container-fluid main-container">
       <div class="row grid-row">
+        <div id="todo">
+        </div>
+        <div id="work">
+        </div>
+        <div id="new-ideas">
+        </div>
       </div>
       <!-- Modals -->
       <!-- Add Note Modal -->
@@ -104,7 +115,28 @@
                     <option value="TODO">TODO</option>
                     <option value="WORK" selected>WORK</option>
                   </select>
-                  <input class='btn btn-default dropdown-toggle' id="colorpicker" value="#ff0000" type="color">
+                  <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-color4 active">
+                      <input name="color-four" type="radio" autocomplete="off" checked>
+                      <span class="glyphicon glyphicon-ok"></span>
+                    </label>
+
+                    <label class="btn btn-color1">
+                      <input name="color-one" type="radio" autocomplete="off">
+                      <span class="glyphicon glyphicon-ok"></span>
+                    </label>
+
+                    <label class="btn btn-color2">
+                      <input name="color-two" type="radio" autocomplete="off">
+                      <span class="glyphicon glyphicon-ok"></span>
+                    </label>
+
+                    <label class="btn btn-color3">
+                      <input name="color-three" type="radio" autocomplete="off">
+                      <span class="glyphicon glyphicon-ok"></span>
+                    </label>
+
+                  </div>
                 </div>
               </div>
               <div class="modal-footer">
@@ -143,7 +175,28 @@
                     <option value="TODO">TODO</option>
                     <option value="WORK">WORK</option>
                   </select>
-                  <input class='btn btn-default dropdown-toggle' id="colorpickerEdit" value="#ff0000" type="color">
+                  <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-color4 active">
+                      <input name="color-four" type="radio" autocomplete="off" checked>
+                      <span class="glyphicon glyphicon-ok"></span>
+                    </label>
+
+                    <label class="btn btn-color1">
+                      <input name="color-one" type="radio" autocomplete="off">
+                      <span class="glyphicon glyphicon-ok"></span>
+                    </label>
+
+                    <label class="btn btn-color2">
+                      <input name="color-two" type="radio" autocomplete="off">
+                      <span class="glyphicon glyphicon-ok"></span>
+                    </label>
+
+                    <label class="btn btn-color3">
+                      <input name="color-three" type="radio" autocomplete="off">
+                      <span class="glyphicon glyphicon-ok"></span>
+                    </label>
+
+                  </div>
                 </div>
               </div>
               <div class="modal-footer">
@@ -160,12 +213,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/load-content.js "></script>
     <script src="js/note.js"></script>
     <script src="js/button.js"></script>
     <script src="js/modal-fix.js"></script>
     <script src="js/fancy.js"></script>
+<<<<<<< HEAD
     <script src="js/intro.js"></script>
     <script src="https://cdn.ckeditor.com/4.8.0/basic/ckeditor.js"></script>
+=======
+    <script src="js/ckeditor.js"></script>
+>>>>>>> 4ea0dca9a9d4e5b65e54696ad3e08aa1d873799a
     <script>
       CKEDITOR.replace('editor1');
       CKEDITOR.replace('editor2');

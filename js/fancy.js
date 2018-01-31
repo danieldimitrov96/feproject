@@ -1,12 +1,43 @@
 /* eslint-disable */
 
+//TODO : 1.add background option
+//TODO : 2. fix container-note size
+//TODO : 3. add animation when creating notes
+//TODO : 4. change animation speed option
+
+// CAN BE CHANGED IN OPIONS MENU
+ANIMATION_SPEED = 580;
+
+//variables
+let $navli = $('.nav-bar-category li');
+let $todo = $('#todo');
+let $work = $('#work');
+let $newIdeas = $('#new-ideas');
+
 // Search nav bar
-$("#searchBox").on("keyup", function () {
+$('#searchBox').on('keyup', function () {
     var value = $(this).val().toLowerCase();
-    $(".note-container").each(function () {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-    });
-});
+    if (value === '') {
+        $navli.removeClass('active');
+        $('li').each(function () {
+            let $this = $(this);
+            if ($this.html().indexOf('SHOW ALL') > -1)
+                $this.addClass('active');
+        });
+        $todo.show(ANIMATION_SPEED);
+        $work.show(ANIMATION_SPEED);
+        $newIdeas.show(ANIMATION_SPEED);
+        // $('.note-category-title').each(() => $(this).closest('.note-container').show(ANIMATION_SPEED));
+    } else {
+        $('.note-container').each(function () {
+            if ($(this).text().toLowerCase().indexOf(value) > -1) {
+                $(this).parent().show(ANIMATION_SPEED);
+            } else {
+                $(this).parent().hide(ANIMATION_SPEED);
+            }
+        });
+    };
+})
 
 // smooth scrooling to top on click on the logo
 $('.navbar-brand, .nav-bar-category, #searchBox').on('click', (function () {
@@ -28,10 +59,42 @@ $('#navBar').affix({
     }
 })
 
-//change active button 
-let navli = $(".nav-bar-category li");
+for (let i = 0; i < 3; i++) {
+    note.add('test', 'joro e ot burgas ivan e ot burgas ivan e ot burgas ivan e ot burgas', 'WORK');
+    note.add('test', 'petyr e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot burgas ', 'NEW IDEAS');
+    note.add('test', 'ismail e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot, burgas ', 'TODO');
+}
 
-navli.on("click", function () {
-    navli.removeClass("active");
-    $(this).addClass("active");
+//change active button 
+$navli.on("click", function () {
+    $navli.removeClass('active');
+    $(this).addClass('active');
+
+    let selectedCategory = ($(this).text().trim());
+    switch (selectedCategory) {
+        case 'TODO':
+            $todo.hide(ANIMATION_SPEED);
+            $todo.show(ANIMATION_SPEED);
+            $work.hide(ANIMATION_SPEED);
+            $newIdeas.hide(ANIMATION_SPEED);
+            break;
+        case 'WORK':
+            $work.hide(ANIMATION_SPEED);
+            $todo.hide(ANIMATION_SPEED);
+            $work.show(ANIMATION_SPEED);
+            $newIdeas.hide(ANIMATION_SPEED);
+            break;
+        case 'NEW IDEAS':
+            $newIdeas.hide(ANIMATION_SPEED);
+            $todo.hide(ANIMATION_SPEED);
+            $work.hide(ANIMATION_SPEED);
+            $newIdeas.show(ANIMATION_SPEED);
+            break;
+        default:
+            $todo.hide(ANIMATION_SPEED);
+            $todo.show(ANIMATION_SPEED);
+            $work.show(ANIMATION_SPEED);
+            $newIdeas.show(ANIMATION_SPEED);
+            break;
+    }
 });

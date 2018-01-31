@@ -1,10 +1,8 @@
 const submitButton = $( "#modalSubmitButton" );
-const pickColor = $( "#colorpicker" );
-
 const submitEditButton = $( "#modalSubmitEditButton" );
 
 submitEditButton.click( function( e ) {
-
+    
     // prevent default
     e.preventDefault();
 
@@ -13,26 +11,22 @@ submitEditButton.click( function( e ) {
 } );
 
 submitButton.click( function( e ) {
-    const noteTitle = $( "#noteTitle" ).val();
+    const addNoteModal = $( "#addNoteModal" );
+
+    const noteTitle = addNoteModal.find( "#noteTitle" ).val();
     const noteText = CKEDITOR.instances.editor1.getData();
-    const noteCategory = $( "#category" ).val();
+    const noteCategory = addNoteModal.find( "#category" ).val();
+    const color = addNoteModal.find( ".btn-group > .active" ).css( "background-color" );
 
     // prevent default
     e.preventDefault();
 
-    // togle pop-up
-    $( "#addNoteModal" ).modal( "toggle" );
+    addNoteModal.modal( "toggle" );
 
     // create new note
-    note.add( noteTitle, noteText, noteCategory );
-
-    // set color of the
-    const lastNote = $( ".note-container" ).last();
-    const colorHEX = pickColor.val();
-    lastNote.css( "background-color", colorHEX );
+    note.add( noteTitle, noteText, noteCategory, color );
 
     // reset inputs too empty
-
     $( "#noteTitle" ).val( "" );
     $( "#cke_editor1" ).val( "" );
     CKEDITOR.instances.editor1.setData( "" );

@@ -1,12 +1,23 @@
+body {
+    /* background-image: url('../img/bg3.gif'); */
+    background-color: white;
+}
+
 .main-container {
     padding: 0;
-    margin-top: 2em;
+    margin-top: 7%;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
 }
 
 img {
     width: 100%;
 }
 
-.grid-row{
-    padding-top :3.2em;
+.btn span.glyphicon {
+	opacity: 0;
+}
+
+.btn.active span.glyphicon {
+	opacity: 1;
 }
