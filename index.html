@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="css/hint.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="css/note.css">
+  <link rel="stylesheet" href="css/options.css"> 
   <script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
 
 </head>
@@ -65,7 +66,7 @@
                 </div>
               </form>
             </li>
-            <li id="optionButton">
+            <li class ="options">
               <a href="#">
                 <span class="glyphicon glyphicon-option-vertical "></span>Options</a>
             </li>
@@ -207,6 +208,40 @@
           </div>
         </div>
       </div>
+      <!-- Options Modal -->
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Options Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Make your ORGO fancy</h4>
+            </div>
+            <div class="modal-body">
+              <p>Choose your personal background image</p>
+              <div class="board-background-select ">
+                <div class="background-box-1 ">
+                  <img src="https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2048x2048/1d615f7c9248d180723696c379ddb17e/photo-1517308732846-c7be1690a45b.jpg">
+                </div>
+              </div>
+              <div class="board-background-select ">
+                <div class="background-box-2 ">
+                  <img src="https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2048x2048/2f38be50b1a251fd8d7d347cd7fb6149/photo-1516395363756-ebccfa2b9ddf.jpg">
+                </div>
+              </div>
+              <div class="board-background-select ">
+                <div class="background-box-3">
+                  <img src="https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2048x2048/6ca6f4d4009c17936e31ec2977190a25/photo-1517064315897-1b3dc47f0424.jpg">
+                </div>
+              </div>
+              </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -218,8 +253,8 @@
     <script src="js/button.js"></script>
     <script src="js/modal-fix.js"></script>
     <script src="js/fancy.js"></script>
-    <script src="js/intro.js"></script>
-    <script src="https://cdn.ckeditor.com/4.8.0/basic/ckeditor.js"></script>
+    <script src="js/options.js"></script> 
+    <script src="js/ckeditor.js"></script>
     <script>
       CKEDITOR.replace('editor1');
       CKEDITOR.replace('editor2');
