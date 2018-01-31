@@ -102,3 +102,9 @@ $navli.on("click", function () {
             break;
     }
 });
+
+$(document).keydown(function(e) { 
+    if (e.keyCode == 27) { 
+        $('.close').click();
+    } 
+});
