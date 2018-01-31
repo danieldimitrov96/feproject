@@ -22,7 +22,7 @@ const readMoreLess = function (currentNote) {
     }
 };
 
-const applyButtonsEvents = function (currentNote) {
+const applyButtonsEvents = function (currentNote, noteId) {
     const title = currentNote.find('#note-title-area');
     const category = currentNote.find('#note-category-area');
     const bottom = currentNote.find('#bottom');
@@ -30,14 +30,15 @@ const applyButtonsEvents = function (currentNote) {
 
     wipeButton.click(function () {
         currentNote.fadeOut(500);
+        localStorage.removeItem(noteId);
         setTimeout(function () {
-            note.wipe(currentNote)
+            note.wipe(currentNote, noteId)
         }, 1000);
     });
 
     const editButton = currentNote.find('#edit_button');
     editButton.click(function () {
-        note.addCurrentInputInEditModal(currentNote);
+        note.addCurrentInputInEditModal(currentNote, noteId);
     });
 
     // expand button
@@ -181,7 +182,7 @@ const note = (function () {
         const red = rgb[0];
         const green = rgb[1];
         const blue = rgb[2];
-        const opacity = 1;
+        const opacity = 0.7;
         const colorSet = `rgba(${red}, ${green}, ${blue}, ${opacity})`;
         container.find('#note').css('background-color', colorSet);
 
@@ -208,11 +209,11 @@ const note = (function () {
         dateTime.text(`${date.getHours()}:${date.getMinutes()} ${date.getDate()}-${months[date.getMonth()]}-${date.getFullYear()}`);
     };
 
-    const wipe = function (note) {
+    const wipe = function (note, noteId) {
         note.remove();
     };
 
-    const addCurrentInputInEditModal = function (note) {
+    const addCurrentInputInEditModal = function (note, id) {
         let titleNow = note.find('#note-title').text();
         let contentNow = note.find('#note-content').html();
         let categoryNow = note.find('#note-category-area').text();
@@ -221,17 +222,20 @@ const note = (function () {
         $('#editNoteTitle').val(titleNow);
         $("#categoryEdit").val(categoryNow).change();
         CKEDITOR.instances.editor2.setData(contentNow);
-
+        
         const modal = $('#editNoteModal');
-
+        
         // mark the current color.
         modal.find('.btn-group > label').each(function () {
-            if ($(this).hasClass('active')) {
-                if (setColor($(this).css('background-color')) !== styleNow) {
+            const buttonColor = $(this).css('background-color'); // as rgb
+            const buttonColorRgba = setColor(buttonColor);
+
+            if (buttonColorRgba !== styleNow) {
+                if ($(this).hasClass('active')) {
                     $(this).removeClass('active');
                 }
             } else {
-                if (setColor($(this).css('background-color')) === styleNow) {
+                if (!$(this).hasClass('active')) {
                     $(this).addClass('active');
                 }
             }
@@ -243,19 +247,33 @@ const note = (function () {
             titleNow = modal.find("#editNoteTitle").val();
             contentNow = CKEDITOR.instances.editor2.getData();
 
-            styleNow = modal.find(".btn-group > .active").css("background-color");
-            styleNow = setColor(styleNow);
+            const rawColor = modal.find(".btn-group > .active").css("background-color");
+            const Rgba = setColor(rawColor);
 
             // set changed values
-            note.find('#note-title').text(titleNow)
+            note.find('#note-title').text(titleNow);
             note.find('#note-content').html(contentNow);
             note.find('#note-category-area').html(`<p class="note-category-title h6 page-header">${categoryNow}</p>`);
-            note.find('.note').css("background-color", styleNow);
+            note.find('.note').css("background-color", Rgba);
+
+            const savedNote = JSON.stringify({
+                'title': titleNow,
+                'content': contentNow,
+                'category': categoryNow,
+                'color': rawColor,
+            });
+
+            localStorage.setItem(id, savedNote);
         });
     };
 
     return {
-        'add': function add(title = null, content = null, category = null, color = 'rgb(250,250,249)') {
+        'add': function add(title = null, content = null, category = null, color = 'rgb(250,250,249)', id = null) {
+            
+            if (id === null) {
+                id = parseInt(Math.random() * 1000000);
+            }
+
             addTitle(title);
             addContent(content);
             addCategory(category);
@@ -263,10 +281,15 @@ const note = (function () {
             setDateTime();
             const noteFinal = container.clone();
             noteFinal.prependTo(targetParent);
-            applyButtonsEvents(noteFinal);
+            applyButtonsEvents(noteFinal, id);
             applyHoverEffects(noteFinal);
             readMoreLess(noteFinal);
+
+            const savedNote = JSON.stringify({'title': title, 'content': content, 'category': category, 'color': color});
+            localStorage.setItem(id, savedNote);
+
         },
+
         'wipe': wipe,
         'addCurrentInputInEditModal': addCurrentInputInEditModal,
     }

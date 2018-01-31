@@ -59,12 +59,6 @@ $('#navBar').affix({
     }
 })
 
-for (let i = 0; i < 3; i++) {
-    note.add('test', 'joro e ot burgas ivan e ot burgas ivan e ot burgas ivan e ot burgas', 'WORK');
-    note.add('test', 'petyr e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot burgas ', 'NEW IDEAS');
-    note.add('test', 'ismail e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot, burgas ', 'TODO');
-}
-
 //change active button 
 $navli.on("click", function () {
     $navli.removeClass('active');

@@ -1,8 +1,7 @@
 body {
-    /* background-image: url('../img/bg3.gif'); */
-    background-color: white;
     position: relative;
     background-attachment: fixed;
+    transition: background 1s linear;
 }
 
 .main-container {
@@ -14,6 +13,7 @@ body {
 
 img {
     width: 100%;
+    
 }
 
 .btn span.glyphicon {
