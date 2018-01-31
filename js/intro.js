@@ -1,4 +1,4 @@
-var RunIntro = function () {
+var runIntro = function () {
 
   var welcomingText = 'This is a short informational intro  for ORGO';
   welcomingText = welcomingText.toUpperCase();
@@ -19,9 +19,6 @@ var RunIntro = function () {
     ['thank you',],   
   ];
 
-
-
-
   function setupIntro() {
     var btnSkip = $('<button>').text('skip intro').attr({
       'class': 'skipButton button button-caution  button-giant '
@@ -37,7 +34,7 @@ var RunIntro = function () {
     var introWrapper = $('<div/>').attr({
       'class': 'introWrapper',
     }).css({
-      'height': '98vh',
+      'height': '100vh',
       'width': '100%',
       'position': 'fixed',
       'z-index': '99',
@@ -46,7 +43,7 @@ var RunIntro = function () {
       'background-color': '#fff',
     });
     var background = $('<div/>').css({
-      'height': '98vh',
+      'height': '100vh',
       'width': '100%',
       'position': 'fixed',
       'z-index': '100',
@@ -69,8 +66,7 @@ var RunIntro = function () {
         'text-align': 'center',
       });
 
-
-    //combine elements in intro div
+    //combine elements in into div
     introWrapper.append(text);
     introWrapper.append(background);
     introWrapper.append(btnSkip);
@@ -88,11 +84,9 @@ var RunIntro = function () {
 
     setTimeout(function () {
       if (i === messageAr.length) {
+        $('.introWrapper').remove();
         return  ;
       }
-      
-     
-
       
       if(messageAr[i][1]){
         $('.introWrapper').toggle();
@@ -102,17 +96,13 @@ var RunIntro = function () {
           $('.introWrapper').toggle();
         }
         $('.introText').text(messageAr[i][0].toUpperCase());
-      }
-      
-
-      
+      }       
       cycleMessages(i + 1, duration);
     }, 6000);
     
   }
-
-  cycleMessages(1,500);
+  cycleMessages(1,5000);
 
 }
 
-RunIntro();
+runIntro();
