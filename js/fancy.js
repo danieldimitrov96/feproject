@@ -16,15 +16,12 @@ $("#searchBox").on("keyup", function () {
         $('#todo').show();
         $('#work').show();
         $('#new-ideas').show();
-        // $('.note-category-title').each(() => $(this).closest('.note-container').show());
     } else {
         $(".note-container").each(function () {
             if ($(this).text().toLowerCase().indexOf(value) > -1) {
                 $(this).show();
             } else {
                 $(this).hide();
-                
-
             }
         });
     };
@@ -54,14 +51,13 @@ $('#navBar').affix({
 })
 
 
-for (let i = 0; i < 3; i++) {
-    note.add('test', 'joro e ot burgas ivan e ot burgas ivan e ot burgas ivan e ot burgas', 'WORK');
-    note.add('test', 'petyr e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot burgas ', 'NEW IDEAS');
-    note.add('test', 'ismail e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot, burgas ', 'TODO');
+// for (let i = 0; i < 3; i++) {
+//     note.add('test', 'joro e ot burgas ivan e ot burgas ivan e ot burgas ivan e ot burgas', 'WORK');
+//     note.add('test', 'petyr e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot burgas ', 'NEW IDEAS');
+//     note.add('test', 'ismail e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot, burgas ', 'TODO');
+// }
 
-}
-
-//change active button 
+//change active button
 
 navli.on("click", function () {
     navli.removeClass("active");
