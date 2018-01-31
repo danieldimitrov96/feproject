@@ -88,6 +88,7 @@ var RunIntro = function () {
 
     setTimeout(function () {
       if (i === messageAr.length) {
+        $('.introWrapper').remove();
         return  ;
       }
       
