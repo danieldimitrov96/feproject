@@ -24,13 +24,13 @@ var RunIntro = function () {
 
   function setupIntro() {
     var btnSkip = $('<button>').text('skip intro').attr({
-      'class': 'skipButton'
+      'class': 'skipButton button button-caution  button-giant '
     }).css({
       'position': 'fixed',
       'z-index': '200',
       'display': 'block',
-      'left': '50%',
-      'top': '90%',
+      'left': '44%',
+      'top': '88%',
 
     });
 
@@ -43,6 +43,7 @@ var RunIntro = function () {
       'z-index': '99',
       'margin': '0',
       'pading': '0',
+      'background-color': '#fff',
     });
     var background = $('<div/>').css({
       'height': '98vh',
@@ -73,7 +74,7 @@ var RunIntro = function () {
     introWrapper.append(text);
     introWrapper.append(background);
     introWrapper.append(btnSkip);
-    $('body').append(introWrapper);
+    $('body').prepend(introWrapper);
 
     //add event listeners
     $('.skipButton').on('click', function () {
