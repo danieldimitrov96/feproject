@@ -1,6 +1,8 @@
 body {
     /* background-image: url('../img/bg3.gif'); */
     background-color: white;
+    position: relative;
+    background-attachment: fixed;
 }
 
 .main-container {

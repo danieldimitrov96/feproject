@@ -1,34 +1,43 @@
 /* eslint-disable */
 
-// Search nav bar
-let navli = $(".nav-bar-category li");
+//TODO : 1.add background option
+//TODO : 2. fix container-note size
+//TODO : 3. add animation when creating notes
+//TODO : 4. change animation speed option
 
-$("#searchBox").on("keyup", function () {
+// CAN BE CHANGED IN OPIONS MENU
+ANIMATION_SPEED = 580;
+
+//variables
+let $navli = $('.nav-bar-category li');
+let $todo = $('#todo');
+let $work = $('#work');
+let $newIdeas = $('#new-ideas');
+
+// Search nav bar
+$('#searchBox').on('keyup', function () {
     var value = $(this).val().toLowerCase();
     if (value === '') {
-
-        navli.removeClass("active");
+        $navli.removeClass('active');
         $('li').each(function () {
             let $this = $(this);
             if ($this.html().indexOf('SHOW ALL') > -1)
-                $this.addClass("active");
+                $this.addClass('active');
         });
-        $('#todo').show();
-        $('#work').show();
-        $('#new-ideas').show();
+        $todo.show(ANIMATION_SPEED);
+        $work.show(ANIMATION_SPEED);
+        $newIdeas.show(ANIMATION_SPEED);
+        // $('.note-category-title').each(() => $(this).closest('.note-container').show(ANIMATION_SPEED));
     } else {
-        $(".note-container").each(function () {
+        $('.note-container').each(function () {
             if ($(this).text().toLowerCase().indexOf(value) > -1) {
-                $(this).show();
+                $(this).parent().show(ANIMATION_SPEED);
             } else {
-                $(this).hide();
+                $(this).parent().hide(ANIMATION_SPEED);
             }
         });
     };
 })
-
-
-
 
 // smooth scrooling to top on click on the logo
 $('.navbar-brand, .nav-bar-category, #searchBox').on('click', (function () {
@@ -50,40 +59,46 @@ $('#navBar').affix({
     }
 })
 
-
-// for (let i = 0; i < 3; i++) {
-//     note.add('test', 'joro e ot burgas ivan e ot burgas ivan e ot burgas ivan e ot burgas', 'WORK');
-//     note.add('test', 'petyr e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot burgas ', 'NEW IDEAS');
-//     note.add('test', 'ismail e ot burgas gosho e ot burgas ivan e ot burgas ivan e ot, burgas ', 'TODO');
-// }
-
-//change active button
-
-navli.on("click", function () {
-    navli.removeClass("active");
-    $(this).addClass("active");
+//change active button 
+$navli.on("click", function () {
+    $navli.removeClass('active');
+    $(this).addClass('active');
 
     let selectedCategory = ($(this).text().trim());
     switch (selectedCategory) {
         case 'TODO':
-            $('#todo').show();
-            $('#work').hide();
-            $('#new-ideas').hide();
+            document.title = "ORGO - TODO";
+            $todo.hide(ANIMATION_SPEED);
+            $todo.show(ANIMATION_SPEED);
+            $work.hide(ANIMATION_SPEED);
+            $newIdeas.hide(ANIMATION_SPEED);
             break;
         case 'WORK':
-            $('#todo').hide();
-            $('#work').show();
-            $('#new-ideas').hide();
+            document.title = "ORGO - Work";
+            $work.hide(ANIMATION_SPEED);
+            $todo.hide(ANIMATION_SPEED);
+            $work.show(ANIMATION_SPEED);
+            $newIdeas.hide(ANIMATION_SPEED);
             break;
         case 'NEW IDEAS':
-            $('#todo').hide();
-            $('#work').hide();
-            $('#new-ideas').show();
+            document.title = "ORGO - New ideas";
+            $newIdeas.hide(ANIMATION_SPEED);
+            $todo.hide(ANIMATION_SPEED);
+            $work.hide(ANIMATION_SPEED);
+            $newIdeas.show(ANIMATION_SPEED);
             break;
         default:
-            $('#todo').show();
-            $('#work').show();
-            $('#new-ideas').show();
+            document.title = "ORGO - Show all";
+            $todo.hide(ANIMATION_SPEED);
+            $todo.show(ANIMATION_SPEED);
+            $work.show(ANIMATION_SPEED);
+            $newIdeas.show(ANIMATION_SPEED);
             break;
     }
+});
+
+$(document).keydown(function(e) { 
+    if (e.keyCode == 27) { 
+        $('.close').click();
+    } 
 });
