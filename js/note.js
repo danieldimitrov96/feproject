@@ -29,11 +29,14 @@ const applyButtonsEvents = function (currentNote, noteId) {
     const wipeButton = currentNote.find('#wipe_button');
 
     wipeButton.click(function () {
-        currentNote.fadeOut(500);
-        localStorage.removeItem(noteId);
-        setTimeout(function () {
-            note.wipe(currentNote, noteId)
-        }, 1000);
+        var answear = confirm("Are you sure you wan to delete this note?");
+        if (answear == true) {
+            currentNote.fadeOut(500);
+            localStorage.removeItem(noteId);
+            setTimeout(function () {
+                note.wipe(currentNote, noteId)
+            }, 1000);
+        } 
     });
 
     const editButton = currentNote.find('#edit_button');
