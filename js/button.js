@@ -1,5 +1,11 @@
 const submitButton = $( "#modalSubmitButton" );
 const submitEditButton = $( "#modalSubmitEditButton" );
+const intro = $("#intro");
+
+intro.click(function(e){
+    e.preventDefault();
+    runIntro();
+})
 
 submitEditButton.click( function( e ) {
     
@@ -12,7 +18,6 @@ submitEditButton.click( function( e ) {
 
 submitButton.click( function( e ) {
     const addNoteModal = $( "#addNoteModal" );
-
     const noteTitle = addNoteModal.find( "#noteTitle" ).val();
     const noteText = CKEDITOR.instances.editor1.getData();
     const noteCategory = addNoteModal.find( "#category" ).val();

@@ -9,7 +9,7 @@
   <title>ORGO - Show all</title>
 
   <!-- Bootstrap -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap.css" rel="stylesheet">
 
   <!-- Custom css files -->
   <link rel="stylesheet" href="css/styles.css">
@@ -52,7 +52,11 @@
             <li>
               <a href="#">NEW IDEAS</a>
             </li>
-
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <a id="intro" class="nav navbar-nav navbar-left" href="#">Intro</a>
+                </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
@@ -67,7 +71,7 @@
               </form>
             </li>
             <li class ="options">
-              <a href="#">
+              <a id='optionButton' href="#">
                 <span class="glyphicon glyphicon-option-vertical "></span>Options</a>
             </li>
           </ul>
@@ -237,7 +241,7 @@
               </div>
               </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button id="modalOptionClose" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
