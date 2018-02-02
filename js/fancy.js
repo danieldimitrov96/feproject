@@ -104,4 +104,10 @@ const fancy = (function () {
             $('.close').click();
         }
     });
+
+    $('.board-background-select').on('click', function () {
+        let $this=$(this);
+        $this.animate({opacity:'0.3'},'fast');
+        $this.animate({opacity:'1'},'fast');
+    });
 })();
