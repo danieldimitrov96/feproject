@@ -29,14 +29,14 @@ const applyButtonsEvents = function (currentNote, noteId) {
     const wipeButton = currentNote.find('#wipe_button');
 
     wipeButton.click(function () {
-        var answear = confirm("Are you sure you wan to delete this note?");
-        if (answear == true) {
+        var answer = confirm("Are you sure you wan to delete this note?");
+        if (answer == true) {
             currentNote.fadeOut(500);
             localStorage.removeItem(noteId);
             setTimeout(function () {
                 note.wipe(currentNote, noteId)
             }, 1000);
-        } 
+        }
     });
 
     const editButton = currentNote.find('#edit_button');
@@ -165,14 +165,14 @@ const note = (function () {
         title.find('#note-title').html($.parseHTML(text));
     };
 
-    const addCategory = function (str) {
-        switch(str) {
+    const addCategory = function (text) {
+        switch(text) {
             case 'TODO': targetParent = parent.find('#todo'); break;
             case 'WORK': targetParent = parent.find('#work'); break;
             case 'NEW IDEAS': targetParent = parent.find('#new-ideas'); break;
             default: targetParent = parent.find('#todo');
         }
-        title.find('#note-category-area').html($('</p>').attr('class', 'note-category-title h6 page-header text-sm-left').text(str));
+        title.find('#note-category-area').html($('</p>').attr('class', 'note-category-title h6 page-header text-sm-left').text(text));
     }
 
     const addContent = function (text) {
@@ -186,10 +186,10 @@ const note = (function () {
         const green = rgb[1];
         const blue = rgb[2];
         const opacity = 0.7;
-        const colorSet = `rgba(${red}, ${green}, ${blue}, ${opacity})`;
-        container.find('#note').css('background-color', colorSet);
+        const rgba = `rgba(${red}, ${green}, ${blue}, ${opacity})`;
+        container.find('#note').css('background-color', rgba);
 
-        return colorSet;
+        return rgba;
     };
 
     const setDateTime = function () {
@@ -272,7 +272,7 @@ const note = (function () {
 
     return {
         'add': function add(title = null, content = null, category = null, color = 'rgb(250,250,249)', id = null) {
-            
+
             if (id === null) {
                 id = parseInt(Math.random() * 1000000);
             }
