@@ -32,6 +32,7 @@ var runIntro = function () {
       'class': 'skipButton button button-caution  button-giant '
     }).css({
       'position': 'fixed',
+      'opacity':'0.3',
       'z-index': '200',
       'display': 'block',
       'top': '88%',
