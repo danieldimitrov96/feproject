@@ -8,8 +8,8 @@
 const fancy = (function () {
 
     // CAN BE CHANGED IN OPIONS MENU
-    const ANIMATION_SPEED_HIDE = 0;
-    const ANIMATION_SPEED_SHOW = 0;
+    const ANIMATION_SPEED_HIDE = 580;
+    const ANIMATION_SPEED_SHOW = 580;
 
     //variables
     let $navli = $('.nav-bar-category li');
@@ -24,11 +24,12 @@ const fancy = (function () {
     }
 
     const showAllCategories = () => {
-        haideAllCategories();
-        $('.note-container').show();
-        $todo.show(ANIMATION_SPEED_SHOW);
-        $work.show(ANIMATION_SPEED_SHOW);
-        $newIdeas.show(ANIMATION_SPEED_SHOW);
+        $('.note-container').hide();
+        $todo.show();
+        $work.show();
+        $newIdeas.show();
+        $('.note-container').show(ANIMATION_SPEED_SHOW);
+        
     }
 
     const showNewIdeas = () => {
