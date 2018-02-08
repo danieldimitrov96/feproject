@@ -1,54 +1,48 @@
 /* eslint-disable */
 
-//TODO : 1.add background option
-//TODO : 2. fix container-note size
-//TODO : 3. add animation when creating notes
-//TODO : 4. change animation speed option
-
 const fancy = (function () {
 
-    // CAN BE CHANGED IN OPIONS MENU
+    //consts
     const ANIMATION_SPEED_HIDE = 580;
     const ANIMATION_SPEED_SHOW = 580;
 
-    //variables
-    let $navli = $('.nav-bar-category li');
-    let $todo = $('#todo');
-    let $work = $('#work');
-    let $newIdeas = $('#new-ideas');
+    const $navli = $('.nav-bar-category li');
+    const $work = $('#work');
+    const $todo = $('#todo');
+    const $newIdeas = $('#new-ideas');
 
     const haideAllCategories = () => {
         $todo.hide(ANIMATION_SPEED_HIDE);
         $work.hide(ANIMATION_SPEED_HIDE);
         $newIdeas.hide(ANIMATION_SPEED_HIDE);
-    }
+    };
 
     const showAllCategories = () => {
-        $('.note-container').hide();
+        $('.grid-row').hide(ANIMATION_SPEED_HIDE);
         $todo.show();
         $work.show();
         $newIdeas.show();
-        $('.note-container').show(ANIMATION_SPEED_SHOW);
-        
-    }
+        $('.note-container').show();
+        $('.grid-row').show(ANIMATION_SPEED_SHOW);
+    };
 
     const showNewIdeas = () => {
         haideAllCategories();
         $('.note-container').show();
         $newIdeas.show(ANIMATION_SPEED_SHOW);
-    }
+    };
 
     const showWork = () => {
         haideAllCategories();
         $('.note-container').show();
         $work.show(ANIMATION_SPEED_SHOW);
-    }
+    };
 
     const showTODO = () => {
         haideAllCategories();
         $('.note-container').show();
         $todo.show(ANIMATION_SPEED_SHOW);
-    }
+    };
 
     // Search nav bar
     $('#searchBox').on('keyup', function () {
@@ -80,10 +74,10 @@ const fancy = (function () {
                 }
             });
         };
-    })
+    });
 
-    // smooth scrooling to top on click on the logo
-    $('.navbar-brand, .nav-bar-category, #searchBox').on('click', (function () {
+    // smooth scrooling to top on click on the logo and search box
+    $('.navbar-brand, #searchBox').on('click', (function () {
         $('html, body').animate({
             scrollTop: 0
         }, 800);
@@ -96,11 +90,12 @@ const fancy = (function () {
         offset: 51
     });
 
+    //smaller nav
     $('#navBar').affix({
         offset: {
             top: 100
         }
-    })
+    });
 
     //change active button 
     $navli.on("click", function () {
@@ -127,13 +122,15 @@ const fancy = (function () {
                 break;
         }
     });
-
+    
+    //close options menu with ESC
     $(document).keydown(function (e) {
         if (e.keyCode == 27) {
             $('.close').click();
         }
     });
 
+    // click feedback when background is selected
     $('.board-background-select').on('click', function () {
         let $this = $(this);
         $this.animate({
