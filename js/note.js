@@ -1,25 +1,15 @@
 /* eslint-disable */
 const readMoreLess = function (currentNote) {
+    const title = currentNote.find('#note-title');
     const noteContent = currentNote.find('#note-content');
     const text = noteContent.text();
-    
-    if (text.length > 250) {
-        const firstPart = $('<span/>').attr('id', 'first-part').text(text.substr(0, 250));
-        const secondPart = $('<span/>').attr('id', 'second-part').text(text.substr(250, text.length));
-        const dots = $('<span/>').css('opacity', '0.5').html('...');
-        secondPart.css('display', 'none');
-        noteContent.append(firstPart, dots, secondPart);
 
-        noteContent.click(function () {
-            if (secondPart.css('display') === 'none') {
-                dots.css('display', 'none');
-                secondPart.show(200).css('display', '');
-            } else {
-                secondPart.hide(150);
-                dots.css('display', '');
-            }
-        });
-    }
+    noteContent.click(function () {
+        const readWindow = $('#readNoteModal');
+        readWindow.find('#modal-note-title').html(title.html());
+        readWindow.find('#modal-note-content').html(noteContent.html());
+        readWindow.modal("toggle");
+    });
 };
 
 const applyButtonsEvents = function (currentNote, noteId) {
@@ -29,7 +19,7 @@ const applyButtonsEvents = function (currentNote, noteId) {
     const wipeButton = currentNote.find('#wipe_button');
 
     wipeButton.click(function () {
-        var answer = confirm("Are you sure you wan to delete this note?");
+        var answer = confirm("Are you sure you want to delete this note?");
         if (answer == true) {
             currentNote.fadeOut(500);
             localStorage.removeItem(noteId);
@@ -166,11 +156,18 @@ const note = (function () {
     };
 
     const addCategory = function (text) {
-        switch(text) {
-            case 'TODO': targetParent = parent.find('#todo'); break;
-            case 'WORK': targetParent = parent.find('#work'); break;
-            case 'NEW IDEAS': targetParent = parent.find('#new-ideas'); break;
-            default: targetParent = parent.find('#todo');
+        switch (text) {
+            case 'TODO':
+                targetParent = parent.find('#todo');
+                break;
+            case 'WORK':
+                targetParent = parent.find('#work');
+                break;
+            case 'NEW IDEAS':
+                targetParent = parent.find('#new-ideas');
+                break;
+            default:
+                targetParent = parent.find('#todo');
         }
         title.find('#note-category-area').html($('</p>').attr('class', 'note-category-title h6 page-header text-sm-left').text(text));
     }
@@ -225,9 +222,9 @@ const note = (function () {
         $('#editNoteTitle').val(titleNow);
         $("#categoryEdit").val(categoryNow).change();
         CKEDITOR.instances.editor2.setData(contentNow);
-        
+
         const modal = $('#editNoteModal');
-        
+
         // mark the current color.
         modal.find('.btn-group > label').each(function () {
             const buttonColor = $(this).css('background-color'); // as rgb
@@ -288,7 +285,12 @@ const note = (function () {
             applyHoverEffects(noteFinal);
             readMoreLess(noteFinal);
 
-            const savedNote = JSON.stringify({'title': title, 'content': content, 'category': category, 'color': color});
+            const savedNote = JSON.stringify({
+                'title': title,
+                'content': content,
+                'category': category,
+                'color': color
+            });
             localStorage.setItem(id, savedNote);
 
         },

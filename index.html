@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="dist/css/hint.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="dist/css/note.min.css">
-  <link rel="stylesheet" href="dist/css/options.min.css"> 
+  <link rel="stylesheet" href="dist/css/options.min.css">
   <script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
 
 </head>
@@ -54,9 +54,9 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-                <li>
-                  <a id="intro" class="nav navbar-nav navbar-left" href="#">Intro</a>
-                </li>
+            <li>
+              <a id="intro" class="nav navbar-nav navbar-left" href="#">Intro</a>
+            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
@@ -70,7 +70,7 @@
                 </div>
               </form>
             </li>
-            <li class ="options">
+            <li class="options">
               <a id='optionButton' href="#">
                 <span class="glyphicon glyphicon-option-vertical "></span>Options</a>
             </li>
@@ -106,7 +106,7 @@
                 <h4 class="modal-title" id="myModalLabel">Create Note</h4>
               </div>
               <div class="modal-body">
-                <div  class='form-group'>
+                <div class='form-group'>
                   <label>Note Title</label>
                   <input id='noteTitle' type="text" class="form-control" placehoulder="Note Title">
                 </div>
@@ -212,6 +212,7 @@
           </div>
         </div>
       </div>
+
       <!-- Options Modal -->
       <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
@@ -239,11 +240,34 @@
                   <img src="https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2048x2048/6ca6f4d4009c17936e31ec2977190a25/photo-1517064315897-1b3dc47f0424.jpg">
                 </div>
               </div>
-              </div>
+            </div>
             <div class="modal-footer">
               <button id="modalOptionClose" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Read Note Modal -->
+    <div class="modal fade" id="readNoteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <form>
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-note-title" id="modal-note-title"></h4>
+            </div>
+            <div class="modal-body">
+              <div id='modal-note-content' class='form-group'>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button id='modalCloseButton' type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -255,7 +279,7 @@
     <script src="dist/js/button.min.js"></script>
     <script src="dist/js/modal-fix.min.js"></script>
     <script src="dist/js/fancy.min.js"></script>
-    <script src="dist/js/options.min.js"></script> 
+    <script src="dist/js/options.min.js"></script>
     <script src="dist/js/ckeditor.min.js"></script>
     <script src="dist/js/load-content.min.js "></script>
     <script src="dist/js/intro.min.js"></script>

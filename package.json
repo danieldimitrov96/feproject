@@ -30,6 +30,7 @@
     "gulp-uglify": "^3.0.0"
   },
   "dependencies": {
-    "babel-preset-es2016": "^6.24.1"
+    "babel-preset-es2016": "^6.24.1",
+    "live-server": "^1.2.0"
   }
 }

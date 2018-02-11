@@ -19,7 +19,6 @@ submitEditButton.click( function( e ) {
 submitButton.click( function( e ) {
     const addNoteModal = $( "#addNoteModal" );
     const noteTitle = addNoteModal.find( "#noteTitle" ).val();
-    console.log(addNoteModal.find('#noteTitle'));
     const noteText = CKEDITOR.instances.editor1.getData();
     const noteCategory = addNoteModal.find( "#category" ).val();
     const color = addNoteModal.find( ".btn-group > .active" ).css( "background-color" );
