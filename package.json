@@ -25,11 +25,8 @@
     "gulp-uglify": "^3.0.0"
   },
   "dependencies": {
-<<<<<<< HEAD
     "babel-preset-es2016": "^6.24.1",
-    "live-server": "^1.2.0"
-=======
+    "live-server": "^1.2.0",
     "babel-core": "^6.26.0"
->>>>>>> fe7c07a034917f7f9f14b76dc5fa80a972d5ecd0
   }
 }
